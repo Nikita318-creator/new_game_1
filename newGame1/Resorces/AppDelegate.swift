@@ -46,19 +46,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
     // Этот метод вызывается Firebase, когда получен новый FCM токен
+    // todo test111 надо нахуй каждый раз это заполнять или все таки только при первом запуске? и сработает ли оно при первом запуске как ожидается?
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         if let token = fcmToken {
             print("Firebase registration token received: \(token)")
-            // ВАЖНО: Здесь вы можете сохранить полученный токен в локальном хранилище
-            // или сразу же отправить его в Firebase Realtime Database
-            
-            // Пример сохранения токена для дальнейшего использования
             UserDefaults.standard.set(token, forKey: "fcm_token")
             
-            // Если нужно сразу отправить в RTDB, потребуется дополнительный код
+            MainHelper.shared.setConfigData()
         }
     }
     
+    // todo test111 - нам нужны пуши вообще???
     // Обработка получения уведомлений на переднем плане (для RTDB не критично, но полезно)
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         completionHandler([[.banner, .list, .sound]])

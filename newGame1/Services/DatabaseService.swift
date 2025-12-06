@@ -4,7 +4,6 @@ class DatabaseService {
     let databaseRef = Database.database().reference()
     
     func registerUser(data: CoreConfigData) {
-        // Мы используем сгенерированный вами uuid как уникальный ключ для пользователя в RTDB
         let userRef = databaseRef.child("users").child(data.uuid)
         
         let userData: [String: Any?] = [

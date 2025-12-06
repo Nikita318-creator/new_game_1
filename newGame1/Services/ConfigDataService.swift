@@ -11,7 +11,7 @@ struct CoreConfigData {
     let osVersion: String
     let devModel: String
     let bundleID: String
-    var fcmToken: String? // Берем из UserDefaults или напрямую
+    var fcmToken: String?
 }
 
 class ConfigDataService {
