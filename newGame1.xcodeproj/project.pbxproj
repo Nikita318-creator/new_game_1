@@ -6,6 +6,14 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		108287D72EE4827100BD94F5 /* AppsFlyerLib in Frameworks */ = {isa = PBXBuildFile; productRef = 108287D62EE4827100BD94F5 /* AppsFlyerLib */; };
+		108287DA2EE4828300BD94F5 /* SnapKit in Frameworks */ = {isa = PBXBuildFile; productRef = 108287D92EE4828300BD94F5 /* SnapKit */; };
+		108287DD2EE4848600BD94F5 /* FirebaseCore in Frameworks */ = {isa = PBXBuildFile; productRef = 108287DC2EE4848600BD94F5 /* FirebaseCore */; };
+		108287DF2EE4848600BD94F5 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 108287DE2EE4848600BD94F5 /* FirebaseDatabase */; };
+		108287E12EE4848600BD94F5 /* FirebaseMessaging in Frameworks */ = {isa = PBXBuildFile; productRef = 108287E02EE4848600BD94F5 /* FirebaseMessaging */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		108287A92EE4804000BD94F5 /* newGame1.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = newGame1.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -36,6 +44,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				108287D72EE4827100BD94F5 /* AppsFlyerLib in Frameworks */,
+				108287DD2EE4848600BD94F5 /* FirebaseCore in Frameworks */,
+				108287E12EE4848600BD94F5 /* FirebaseMessaging in Frameworks */,
+				108287DF2EE4848600BD94F5 /* FirebaseDatabase in Frameworks */,
+				108287DA2EE4828300BD94F5 /* SnapKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -78,6 +91,11 @@
 			);
 			name = newGame1;
 			packageProductDependencies = (
+				108287D62EE4827100BD94F5 /* AppsFlyerLib */,
+				108287D92EE4828300BD94F5 /* SnapKit */,
+				108287DC2EE4848600BD94F5 /* FirebaseCore */,
+				108287DE2EE4848600BD94F5 /* FirebaseDatabase */,
+				108287E02EE4848600BD94F5 /* FirebaseMessaging */,
 			);
 			productName = newGame1;
 			productReference = 108287A92EE4804000BD94F5 /* newGame1.app */;
@@ -107,6 +125,11 @@
 			);
 			mainGroup = 108287A02EE4804000BD94F5;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				108287D52EE4827100BD94F5 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */,
+				108287D82EE4828300BD94F5 /* XCRemoteSwiftPackageReference "SnapKit" */,
+				108287DB2EE4848600BD94F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 108287AA2EE4804000BD94F5 /* Products */;
 			projectDirPath = "";
@@ -345,6 +368,61 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		108287D52EE4827100BD94F5 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/AppsFlyerSDK/AppsFlyerFramework.git";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 6.17.8;
+			};
+		};
+		108287D82EE4828300BD94F5 /* XCRemoteSwiftPackageReference "SnapKit" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/SnapKit/SnapKit";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 5.7.1;
+			};
+		};
+		108287DB2EE4848600BD94F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 12.6.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		108287D62EE4827100BD94F5 /* AppsFlyerLib */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 108287D52EE4827100BD94F5 /* XCRemoteSwiftPackageReference "AppsFlyerFramework" */;
+			productName = AppsFlyerLib;
+		};
+		108287D92EE4828300BD94F5 /* SnapKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 108287D82EE4828300BD94F5 /* XCRemoteSwiftPackageReference "SnapKit" */;
+			productName = SnapKit;
+		};
+		108287DC2EE4848600BD94F5 /* FirebaseCore */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 108287DB2EE4848600BD94F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseCore;
+		};
+		108287DE2EE4848600BD94F5 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 108287DB2EE4848600BD94F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		108287E02EE4848600BD94F5 /* FirebaseMessaging */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 108287DB2EE4848600BD94F5 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseMessaging;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 108287A12EE4804000BD94F5 /* Project object */;
 }
