@@ -5,7 +5,8 @@ class MainHelper {
     
     var coreConfigData: CoreConfigData?
     var resultURL: URL?
-
+    var finalDataImageURLString: String?
+    
     private let dataService = DataService()
     
     private init() {}
@@ -31,15 +32,12 @@ class MainHelper {
         Task {
             do {
                 guard let coreData else { return }
-                // todo test111 -- нейминг нахуй поменяй чтоб спрятать смысл вебвью
                 try await dataService.getData(coreData: coreData) { [weak self] resultURL in
                     print("Финальная ссылка готова для работы: \(resultURL)")
                     self?.resultURL = resultURL
                     
                     Task { [weak self] in
-                        let dataImageURL = try? await self?.dataService.makeRequest(url: resultURL, coreConfigData: coreData)
-                        print("dataImageURL: \(dataImageURL)")
-                        // Далее: Загрузка finalWebViewURL в WebView
+                        let _ = try? await self?.dataService.makeRequest(url: resultURL, coreConfigData: coreData)
                     }
                 }
 

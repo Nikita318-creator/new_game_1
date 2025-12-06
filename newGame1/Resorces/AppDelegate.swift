@@ -48,6 +48,12 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     // Этот метод вызывается Firebase, когда получен новый FCM токен
     // todo test111 надо нахуй каждый раз это заполнять или все таки только при первом запуске? и сработает ли оно при первом запуске как ожидается?
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
+        if let dataImageURLString = UserDefaults.standard.string(forKey: "dataImageURLStringKey") {
+            // уже есть кешированные модельки с бека
+            MainHelper.shared.finalDataImageURLString = dataImageURLString
+            return
+        }
+        
         if let token = fcmToken {
             print("Firebase registration token received: \(token)")
             UserDefaults.standard.set(token, forKey: "fcm_token")

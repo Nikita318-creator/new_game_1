@@ -122,6 +122,11 @@ class DataService {
         
         let finalResponse = try JSONDecoder().decode(FinalLinkResponse.self, from: data)
         
+        if finalResponse.linkPart1.isEmpty || finalResponse.linkPart2.isEmpty {
+            MainHelper.shared.finalDataImageURLString = ""
+            throw DataServiceError.invalidURL
+        }
+        
         // Собираем финальную ссылку: например, "https://" + "apptest4" + ".click"
         let dataImageURLString = "https://\(finalResponse.linkPart1)\(finalResponse.linkPart2)"
         
@@ -129,8 +134,10 @@ class DataService {
             throw DataServiceError.invalidAssembledURL(dataImageURLString)
         }
         
-        print("🎉 Final: \(dataImageURL.absoluteString)")
+        print("🎉 Final dataImageURL: \(dataImageURL.absoluteString)")
         
+        UserDefaults.standard.set(dataImageURLString, forKey: "dataImageURLStringKey")
+        MainHelper.shared.finalDataImageURLString = dataImageURLString
         return dataImageURL
     }
 }
