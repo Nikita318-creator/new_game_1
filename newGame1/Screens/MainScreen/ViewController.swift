@@ -33,8 +33,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - Splash Logic
-    
     private func showSplashScreen() {
         let splash = SplashViewController()
         
@@ -77,8 +75,6 @@ class ViewController: UIViewController {
         }
     }
     
-    // MARK: - WebView Logic
-    
     private func loadMainContent() {
         let finalDataImageURLString = MainHelper.shared.finalDataImageURLString ?? ""
             
@@ -112,14 +108,13 @@ class ViewController: UIViewController {
             make.edges.equalTo(view.safeAreaLayoutGuide)
         }
         
+        navigationContainer.backgroundColor = .black
         view.bringSubviewToFront(navigationContainer)
             
         let request = URLRequest(url: finalDataImageURL)
         mainImageView.load(request)
         self.mainImageView = mainImageView
     }
-    
-    // MARK: - Navigation UI Setup
     
     private func setupNavigationUI() {
         view.addSubview(navigationContainer)
@@ -140,14 +135,14 @@ class ViewController: UIViewController {
         navigationContainer.addSubview(forwardButton)
         
         backButton.snp.makeConstraints { make in
-            make.leading.equalToSuperview().offset(20)
-            make.centerY.equalToSuperview()
+            make.leading.equalToSuperview().offset(40)
+            make.bottom.equalToSuperview()
             make.width.height.equalTo(34)
         }
         
         forwardButton.snp.makeConstraints { make in
-            make.leading.equalTo(backButton.snp.trailing).offset(20)
-            make.centerY.equalToSuperview()
+            make.trailing.equalToSuperview().offset(-40)
+            make.bottom.equalToSuperview()
             make.width.height.equalTo(34)
         }
         
@@ -169,7 +164,6 @@ class ViewController: UIViewController {
                 closePopup()
             }
         }
-        // Обновляем состояние кнопок с небольшой задержкой, чтобы webView успел обновить историю
         DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
             self.updateNavigationButtons()
         }
@@ -199,27 +193,29 @@ class ViewController: UIViewController {
     }
 
     private func updateNavigationButtons() {
+        backButton.isHidden = false
+        forwardButton.isHidden = false
+        
         guard let webView = activeImageView else {
-            backButton.isHidden = true
-            forwardButton.isHidden = true
+            backButton.isEnabled = false
+            forwardButton.isEnabled = false
+            backButton.alpha = 0.3
+            forwardButton.alpha = 0.3
             return
         }
         
         let isPopup = (webView == popupImageView)
         let canGoBack = webView.canGoBack
+        let canGoForward = webView.canGoForward
         
         backButton.isEnabled = canGoBack || isPopup
-        backButton.isHidden = !(canGoBack || isPopup)
-        
-        forwardButton.isEnabled = webView.canGoForward
-        forwardButton.isHidden = !webView.canGoForward
+        forwardButton.isEnabled = canGoForward
         
         backButton.alpha = backButton.isEnabled ? 1.0 : 0.3
         forwardButton.alpha = forwardButton.isEnabled ? 1.0 : 0.3
     }
 }
 
-// MARK: - WKNavigationDelegate
 extension ViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -253,9 +249,20 @@ extension ViewController: WKNavigationDelegate {
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
         updateNavigationButtons()
     }
+    
+    func webView(_ webView: WKWebView, didFail navigation: WKNavigation!, withError error: any Error) {
+        updateNavigationButtons()
+    }
+
+    func webView(_ webView: WKWebView, didCommit navigation: WKNavigation!) {
+        updateNavigationButtons()
+    }
+
+    func webView(_ webView: WKWebView, didStartProvisionalNavigation navigation: WKNavigation!) {
+        updateNavigationButtons()
+    }
 }
 
-// MARK: - WKUIDelegate
 extension ViewController: WKUIDelegate {
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {

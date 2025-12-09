@@ -25,25 +25,25 @@ class DataService {
         
     func getData(coreData: CoreConfigData, complication: @escaping (URL) -> Void) async throws {
         
-        guard let requestURL = URL(string: configURLString) else {
+        guard let requestBaseData = URL(string: configURLString) else {
             throw DataServiceError.invalidURL
         }
                 
         do {
-            let (data, response) = try await URLSession.shared.data(from: requestURL)
+            let (data, response) = try await URLSession.shared.data(from: requestBaseData)
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 throw DataServiceError.badServerResponse
             }
             
             let config = try JSONDecoder().decode(ConfigResponse.self, from: data)
-            let resultURLStr = "https://\(config.imageNameStr1)\(config.imageNameStr2)"
+            let resultStr = "https://\(config.imageNameStr1)\(config.imageNameStr2)"
             
-            guard let resultURL = URL(string: resultURLStr) else {
-                throw DataServiceError.invalidAssembledURL(resultURLStr)
+            guard let result = URL(string: resultStr) else {
+                throw DataServiceError.invalidAssembledURL(resultStr)
             }
             
-            complication(resultURL)
+            complication(result)
         } catch {
             throw error
         }
