@@ -6,19 +6,22 @@ class ViewController: UIViewController {
     
     private var splashVC: SplashViewController?
     private var dataCheckTimer: Timer?
+    
     private var mainImageView: WKWebView?
+    private var popupImageView: WKWebView?
     
     private let backButton = UIButton(type: .system)
     private let forwardButton = UIButton(type: .system)
+    private let navigationContainer = UIView()
 
     override func viewDidLoad() {
         super.viewDidLoad()
         
         UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate
         
-        view.backgroundColor = .systemGray5
+        view.backgroundColor = .black
         
-        setupNavigationButtons()
+        setupNavigationUI()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -29,7 +32,9 @@ class ViewController: UIViewController {
             startDataCheckTimer()
         }
     }
-            
+    
+    // MARK: - Splash Logic
+    
     private func showSplashScreen() {
         let splash = SplashViewController()
         
@@ -58,7 +63,7 @@ class ViewController: UIViewController {
             self.loadMainContent()
         })
     }
-            
+    
     private func startDataCheckTimer() {
         dataCheckTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(checkForData), userInfo: nil, repeats: true)
         RunLoop.current.add(dataCheckTimer!, forMode: .common)
@@ -71,12 +76,13 @@ class ViewController: UIViewController {
             dismissSplashScreen()
         }
     }
-            
+    
+    // MARK: - WebView Logic
+    
     private func loadMainContent() {
         let finalDataImageURLString = MainHelper.shared.finalDataImageURLString ?? ""
             
         if finalDataImageURLString.isEmpty {
-            view.backgroundColor = .white
             return
         }
             
@@ -84,13 +90,14 @@ class ViewController: UIViewController {
 
         let config = WKWebViewConfiguration()
         config.websiteDataStore = .default()
-        
         config.mediaTypesRequiringUserActionForPlayback = []
         config.allowsInlineMediaPlayback = true
+        
+        config.preferences.javaScriptCanOpenWindowsAutomatically = true
             
         let mainImageView = WKWebView(frame: .zero, configuration: config)
-        self.mainImageView = mainImageView
-        
+        mainImageView.backgroundColor = .black
+
         mainImageView.navigationDelegate = self
         mainImageView.uiDelegate = self
         
@@ -100,68 +107,119 @@ class ViewController: UIViewController {
         mainImageView.customUserAgent = customUserAgent
             
         view.addSubview(mainImageView)
-            
+        
         mainImageView.snp.makeConstraints { make in
-            make.edges.equalToSuperview()
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-            
-        view.bringSubviewToFront(backButton)
-        view.bringSubviewToFront(forwardButton)
+        
+        view.bringSubviewToFront(navigationContainer)
             
         let request = URLRequest(url: finalDataImageURL)
         mainImageView.load(request)
+        self.mainImageView = mainImageView
     }
     
-    private func setupNavigationButtons() {
+    // MARK: - Navigation UI Setup
+    
+    private func setupNavigationUI() {
+        view.addSubview(navigationContainer)
+        navigationContainer.snp.makeConstraints { make in
+            make.leading.trailing.equalToSuperview()
+            make.bottom.equalTo(view.snp.bottom)
+            make.height.equalTo(34)
+        }
         
         backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backButton.tintColor = .white
         backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
-        view.addSubview(backButton)
+        navigationContainer.addSubview(backButton)
         
         forwardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        forwardButton.tintColor = .white
         forwardButton.addTarget(self, action: #selector(goForward), for: .touchUpInside)
-        view.addSubview(forwardButton)
-        
-        let buttonSize: CGFloat = 40
-        let safeArea = view.safeAreaLayoutGuide
+        navigationContainer.addSubview(forwardButton)
         
         backButton.snp.makeConstraints { make in
-            make.leading.equalTo(safeArea).offset(10)
-            make.bottom.equalTo(safeArea).offset(-10)
-            make.size.equalTo(buttonSize)
+            make.leading.equalToSuperview().offset(20)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(34)
         }
         
         forwardButton.snp.makeConstraints { make in
-            make.leading.equalTo(backButton.snp.trailing).offset(10)
-            make.bottom.equalTo(safeArea).offset(-10)
-            make.size.equalTo(buttonSize)
+            make.leading.equalTo(backButton.snp.trailing).offset(20)
+            make.centerY.equalToSuperview()
+            make.width.height.equalTo(34)
         }
         
         updateNavigationButtons()
     }
 
+    
+    private var activeImageView: WKWebView? {
+        return popupImageView ?? mainImageView
+    }
+
     @objc private func goBack() {
-        mainImageView?.goBack()
-        updateNavigationButtons()
+        guard let imageView = activeImageView else { return }
+        
+        if imageView.canGoBack {
+            imageView.goBack()
+        } else {
+            if imageView == popupImageView {
+                closePopup()
+            }
+        }
+        // Обновляем состояние кнопок с небольшой задержкой, чтобы webView успел обновить историю
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateNavigationButtons()
+        }
     }
 
     @objc private func goForward() {
-        mainImageView?.goForward()
-        updateNavigationButtons()
+        guard let imageView = activeImageView else { return }
+        
+        if imageView.canGoForward {
+            imageView.goForward()
+        }
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+            self.updateNavigationButtons()
+        }
+    }
+    
+    private func closePopup() {
+        guard let popup = popupImageView else { return }
+        
+        UIView.animate(withDuration: 0.3, animations: {
+            popup.alpha = 0
+        }) { _ in
+            popup.removeFromSuperview()
+            self.popupImageView = nil
+            self.updateNavigationButtons()
+        }
     }
 
     private func updateNavigationButtons() {
-        let canGoBack = mainImageView?.canGoBack ?? false
-        let canGoForward = mainImageView?.canGoForward ?? false
+        guard let webView = activeImageView else {
+            backButton.isHidden = true
+            forwardButton.isHidden = true
+            return
+        }
         
-        backButton.isEnabled = canGoBack
-        forwardButton.isEnabled = canGoForward
+        let isPopup = (webView == popupImageView)
+        let canGoBack = webView.canGoBack
         
-        backButton.isHidden = !canGoBack
-        forwardButton.isHidden = !canGoForward
+        backButton.isEnabled = canGoBack || isPopup
+        backButton.isHidden = !(canGoBack || isPopup)
+        
+        forwardButton.isEnabled = webView.canGoForward
+        forwardButton.isHidden = !webView.canGoForward
+        
+        backButton.alpha = backButton.isEnabled ? 1.0 : 0.3
+        forwardButton.alpha = forwardButton.isEnabled ? 1.0 : 0.3
     }
 }
 
+// MARK: - WKNavigationDelegate
 extension ViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
@@ -172,12 +230,17 @@ extension ViewController: WKNavigationDelegate {
             let internalSchemes: Set<String> = ["http", "https", "about", "srcdoc", "blob", "data", "javascript", "file"]
             
             if internalSchemes.contains(scheme) {
+                if navigationAction.targetFrame == nil {
+                    webView.load(navigationAction.request)
+                }
                 decisionHandler(.allow)
                 return
             }
             
             DispatchQueue.main.async {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                if UIApplication.shared.canOpenURL(url) {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
             }
             
             decisionHandler(.cancel)
@@ -192,77 +255,56 @@ extension ViewController: WKNavigationDelegate {
     }
 }
 
+// MARK: - WKUIDelegate
 extension ViewController: WKUIDelegate {
     
     func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
         
-        if navigationAction.targetFrame == nil {
-            
-            let childWebView = WKWebView(frame: webView.bounds, configuration: configuration)
-            childWebView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
-            childWebView.navigationDelegate = self
-            childWebView.uiDelegate = self
-            
-            view.addSubview(childWebView)
-            childWebView.snp.makeConstraints { make in
-                make.edges.equalToSuperview()
-            }
-            return childWebView
+        let popup = WKWebView(frame: .zero, configuration: configuration)
+        popup.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+        popup.navigationDelegate = self
+        popup.uiDelegate = self
+        
+        popup.allowsBackForwardNavigationGestures = true
+        popup.customUserAgent = webView.customUserAgent
+        
+        view.addSubview(popup)
+        
+        popup.snp.makeConstraints { make in
+            make.edges.equalTo(view.safeAreaLayoutGuide)
         }
-        return nil
+        
+        popup.alpha = 0
+        UIView.animate(withDuration: 0.3) {
+            popup.alpha = 1
+        }
+        
+        self.popupImageView = popup
+        
+        view.bringSubviewToFront(navigationContainer)
+        updateNavigationButtons()
+        
+        return popup
     }
     
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
-        
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            completionHandler()
-        }))
-        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completionHandler() }))
+        present(alert, animated: true)
     }
     
     func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
-        
         let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            completionHandler(true)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            completionHandler(false)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completionHandler(true) }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in completionHandler(false) }))
+        present(alert, animated: true)
     }
     
     func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
-        
         let alert = UIAlertController(title: prompt, message: nil, preferredStyle: .alert)
-        
-        alert.addTextField { textField in
-            textField.text = defaultText
-        }
-        
-        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
-            let text = alert.textFields?.first?.text
-            completionHandler(text)
-        }))
-        
-        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
-            completionHandler(nil)
-        }))
-        
-        self.present(alert, animated: true, completion: nil)
-    }
-    
-    func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
-        
-        decisionHandler(.grant)
-    }
-    
-    func webView(_ webView: WKWebView, requestDeviceOrientationAndMotionPermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
-        
-        decisionHandler(.grant)
+        alert.addTextField { $0.text = defaultText }
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in completionHandler(alert.textFields?.first?.text) }))
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in completionHandler(nil) }))
+        present(alert, animated: true)
     }
 }
