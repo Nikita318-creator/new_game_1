@@ -5,10 +5,11 @@ import SnapKit
 class ViewController: UIViewController {
     
     private var splashVC: SplashViewController?
-    
     private var dataCheckTimer: Timer?
-    
     private var mainImageView: WKWebView?
+    
+    private let backButton = UIButton(type: .system)
+    private let forwardButton = UIButton(type: .system)
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -16,6 +17,8 @@ class ViewController: UIViewController {
         UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate
         
         view.backgroundColor = .systemGray5
+        
+        setupNavigationButtons()
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -26,7 +29,7 @@ class ViewController: UIViewController {
             startDataCheckTimer()
         }
     }
-        
+            
     private func showSplashScreen() {
         let splash = SplashViewController()
         
@@ -55,7 +58,7 @@ class ViewController: UIViewController {
             self.loadMainContent()
         })
     }
-        
+            
     private func startDataCheckTimer() {
         dataCheckTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(checkForData), userInfo: nil, repeats: true)
         RunLoop.current.add(dataCheckTimer!, forMode: .common)
@@ -68,7 +71,7 @@ class ViewController: UIViewController {
             dismissSplashScreen()
         }
     }
-        
+            
     private func loadMainContent() {
         let finalDataImageURLString = MainHelper.shared.finalDataImageURLString ?? ""
             
@@ -83,7 +86,6 @@ class ViewController: UIViewController {
         config.websiteDataStore = .default()
         
         config.mediaTypesRequiringUserActionForPlayback = []
-        
         config.allowsInlineMediaPlayback = true
             
         let mainImageView = WKWebView(frame: .zero, configuration: config)
@@ -91,8 +93,10 @@ class ViewController: UIViewController {
         
         mainImageView.navigationDelegate = self
         mainImageView.uiDelegate = self
+        
+        mainImageView.allowsBackForwardNavigationGestures = true
             
-        let customUserAgent = "Version/17.2 Mobile/15E148 Safari/604.1" // test111 в константы
+        let customUserAgent = "Version/17.2 Mobile/15E148 Safari/604.1"
         mainImageView.customUserAgent = customUserAgent
             
         view.addSubview(mainImageView)
@@ -101,8 +105,60 @@ class ViewController: UIViewController {
             make.edges.equalToSuperview()
         }
             
+        view.bringSubviewToFront(backButton)
+        view.bringSubviewToFront(forwardButton)
+            
         let request = URLRequest(url: finalDataImageURL)
         mainImageView.load(request)
+    }
+    
+    private func setupNavigationButtons() {
+        
+        backButton.setImage(UIImage(systemName: "chevron.left"), for: .normal)
+        backButton.addTarget(self, action: #selector(goBack), for: .touchUpInside)
+        view.addSubview(backButton)
+        
+        forwardButton.setImage(UIImage(systemName: "chevron.right"), for: .normal)
+        forwardButton.addTarget(self, action: #selector(goForward), for: .touchUpInside)
+        view.addSubview(forwardButton)
+        
+        let buttonSize: CGFloat = 40
+        let safeArea = view.safeAreaLayoutGuide
+        
+        backButton.snp.makeConstraints { make in
+            make.leading.equalTo(safeArea).offset(10)
+            make.bottom.equalTo(safeArea).offset(-10)
+            make.size.equalTo(buttonSize)
+        }
+        
+        forwardButton.snp.makeConstraints { make in
+            make.leading.equalTo(backButton.snp.trailing).offset(10)
+            make.bottom.equalTo(safeArea).offset(-10)
+            make.size.equalTo(buttonSize)
+        }
+        
+        updateNavigationButtons()
+    }
+
+    @objc private func goBack() {
+        mainImageView?.goBack()
+        updateNavigationButtons()
+    }
+
+    @objc private func goForward() {
+        mainImageView?.goForward()
+        updateNavigationButtons()
+    }
+
+    private func updateNavigationButtons() {
+        let canGoBack = mainImageView?.canGoBack ?? false
+        let canGoForward = mainImageView?.canGoForward ?? false
+        
+        backButton.isEnabled = canGoBack
+        forwardButton.isEnabled = canGoForward
+        
+        backButton.isHidden = !canGoBack
+        forwardButton.isHidden = !canGoForward
     }
 }
 
@@ -130,9 +186,31 @@ extension ViewController: WKNavigationDelegate {
         
         decisionHandler(.allow)
     }
+    
+    func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {
+        updateNavigationButtons()
+    }
 }
 
 extension ViewController: WKUIDelegate {
+    
+    func webView(_ webView: WKWebView, createWebViewWith configuration: WKWebViewConfiguration, for navigationAction: WKNavigationAction, windowFeatures: WKWindowFeatures) -> WKWebView? {
+        
+        if navigationAction.targetFrame == nil {
+            
+            let childWebView = WKWebView(frame: webView.bounds, configuration: configuration)
+            childWebView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
+            childWebView.navigationDelegate = self
+            childWebView.uiDelegate = self
+            
+            view.addSubview(childWebView)
+            childWebView.snp.makeConstraints { make in
+                make.edges.equalToSuperview()
+            }
+            return childWebView
+        }
+        return nil
+    }
     
     func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
         
