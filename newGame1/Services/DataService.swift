@@ -1,81 +1,55 @@
 import UIKit
 
-// Вспомогательная структура для парсинга JSON
-// todo test111 переименовать параметры под себя
 private struct ConfigResponse: Decodable {
-    let hostPart: String
-    let pathPart: String
+    let imageNameStr1: String
+    let imageNameStr2: String
     
     private enum CodingKeys: String, CodingKey {
-        case hostPart = "stray"
-        case pathPart = "swap"
+        case imageNameStr1 = "stray"
+        case imageNameStr2 = "swap"
     }
 }
 
-// MARK: - Вспомогательная структура для парсинга JSON от Backend
-// todo test111 переименовать параметры под себя
-private struct FinalLinkResponse: Decodable {
-    // Соответствует "more"
-    let linkPart1: String
-    // Соответствует "sea"
-    let linkPart2: String
+private struct ConfigResponseTestB: Decodable {
+    let testBImageStr1: String
+    let testBImageStr2: String
     
-    // Ключи для декодирования, соответствующие JSON (more и sea)
     private enum CodingKeys: String, CodingKey {
-        case linkPart1 = "more"
-        case linkPart2 = "sea"
+        case testBImageStr1 = "more"
+        case testBImageStr2 = "sea"
     }
 }
 
 class DataService {
-    // URL для запроса конфигурации Firebase
     private let configURLString = "https://zm-team-21088-default-rtdb.firebaseio.com/.json" // todo test111 поставить боевой урл
-    
-    // MARK: - Логика Запроса и Сборки URL
-    
+        
     func getData(coreData: CoreConfigData, complication: @escaping (URL) -> Void) async throws {
         
         guard let requestURL = URL(string: configURLString) else {
             throw DataServiceError.invalidURL
         }
-        
-        print("Starting Firebase config request...")
-        
+                
         do {
-            // Выполнение сетевого запроса
             let (data, response) = try await URLSession.shared.data(from: requestURL)
             
             guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
                 throw DataServiceError.badServerResponse
             }
             
-            // 1. Декодирование JSON в структуру ConfigResponse
             let config = try JSONDecoder().decode(ConfigResponse.self, from: data)
-            
-            // 2. Сборка финальной ссылки
-            // Пример: http://grandmalaysia.com/test_back
-            let resultURLStr = "https://\(config.hostPart)\(config.pathPart)"
+            let resultURLStr = "https://\(config.imageNameStr1)\(config.imageNameStr2)"
             
             guard let resultURL = URL(string: resultURLStr) else {
                 throw DataServiceError.invalidAssembledURL(resultURLStr)
             }
             
-            print("✅ Successfully assembled URL: \(resultURL.absoluteString)")
             complication(resultURL)
         } catch {
-            print("❌ Data fetching error: \(error.localizedDescription)")
-            // Передаем ошибку выше для обработки
             throw error
         }
     }
     
-    // todo test111 поменять тип возвращаемого значения (сейчас возвращает готовую ссылку для WebView)
     func makeRequest(url: URL, coreConfigData: CoreConfigData) async throws -> URL {
-        
-        // --- 1. Формирование Строки Параметров (Query String) ---
-        
-        // ВАЖНО: URLQueryItem.value автоматически обрабатывает nil, но мы должны использовать оператор объединения
-        // nil-значений (?? "") для приведения опционалов к String, чтобы избежать ошибок кодирования.
         let rawQueryString = """
                 appsflyer_id=\(coreConfigData.appsFlyerID ?? "")\
                 &app_instance_id=\(coreConfigData.appInstanceID ?? "")\
@@ -86,58 +60,43 @@ class DataService {
                 &fcm_token=\(coreConfigData.fcmToken ?? "")\
                 &att_token=\(coreConfigData.attToken ?? "")
                 """
-        
-        print("Raw Query String for Base64: \(rawQueryString)")
-        
-        // --- 2. Base64 Кодирование ---
-        
+                        
         guard let dataToEncode = rawQueryString.data(using: .utf8) else {
             throw DataServiceError.encodingFailed
         }
         
         let base64EncodedString = dataToEncode.base64EncodedString()
-        
-        // --- 3. Сборка Финального URL для POST запроса ---
-        
-        // Базовый URL (https://grandmalaysia.com/test_back) + ?data= + base64 строка
-        guard let finalURL = URL(string: url.absoluteString + "?data=" + base64EncodedString) else {
+                
+        guard let baseImageStr = URL(string: url.absoluteString + "?data=" + base64EncodedString) else {
             throw DataServiceError.invalidAssembledURL(url.absoluteString + "?data=...")
         }
-        
-        print("Final Backend URL: \(finalURL.absoluteString)")
-        
-        // --- 4. Выполнение POST Запроса ---
-        
-        var request = URLRequest(url: finalURL)
+                        
+        var request = URLRequest(url: baseImageStr)
         request.httpMethod = "POST"
-        // Тело запроса: Пустое (как запрошено)
         
         let (data, response) = try await URLSession.shared.data(for: request)
         
         guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
             throw DataServiceError.badServerResponse
         }
+                
+        let configResponseTestB = try JSONDecoder().decode(ConfigResponseTestB.self, from: data)
         
-        // --- 5. Обработка Ответа и Сборка Финальной ---
-        
-        let finalResponse = try JSONDecoder().decode(FinalLinkResponse.self, from: data)
-        
-        if finalResponse.linkPart1.isEmpty || finalResponse.linkPart2.isEmpty {
+        if configResponseTestB.testBImageStr1.isEmpty || configResponseTestB.testBImageStr2.isEmpty {
+            UserDefaults.standard.set("", forKey: "imageStringMainKey")
             MainHelper.shared.finalDataImageURLString = ""
             throw DataServiceError.invalidURL
         }
         
-        // Собираем финальную ссылку: например, "https://" + "apptest4" + ".click"
-        let dataImageURLString = "https://\(finalResponse.linkPart1)\(finalResponse.linkPart2)"
+        let imageStringMain = "https://\(configResponseTestB.testBImageStr1)\(configResponseTestB.testBImageStr2)"
         
-        guard let dataImageURL = URL(string: dataImageURLString) else {
-            throw DataServiceError.invalidAssembledURL(dataImageURLString)
+        guard let dataImageURL = URL(string: imageStringMain) else {
+            throw DataServiceError.invalidAssembledURL(imageStringMain)
         }
-        
-        print("🎉 Final dataImageURL: \(dataImageURL.absoluteString)")
-        
-        UserDefaults.standard.set(dataImageURLString, forKey: "dataImageURLStringKey")
-        MainHelper.shared.finalDataImageURLString = dataImageURLString
+                
+        UserDefaults.standard.set(imageStringMain, forKey: "imageStringMainKey")
+        MainHelper.shared.finalDataImageURLString = imageStringMain
+
         return dataImageURL
     }
 }
@@ -152,13 +111,13 @@ enum DataServiceError: Error, LocalizedError {
     var errorDescription: String? {
         switch self {
         case .invalidURL:
-            return "Configuration URL is invalid."
+            return "invalidURL"
         case .badServerResponse:
-            return "Server returned a non-200 status code."
+            return "badServerResponse"
         case .invalidAssembledURL(let url):
-            return "Assembled final URL is invalid: \(url)"
+            return "invalidURL \(url)"
         case .encodingFailed:
-            return "Failed to encode the query string to Base64."
+            return "encodingFailed"
         }
     }
 }

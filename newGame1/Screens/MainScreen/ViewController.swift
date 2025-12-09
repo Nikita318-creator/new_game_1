@@ -1,4 +1,5 @@
 import UIKit
+import WebKit
 import SnapKit
 
 class ViewController: UIViewController {
@@ -7,6 +8,8 @@ class ViewController: UIViewController {
     
     private var dataCheckTimer: Timer?
     
+    private var mainImageView: WKWebView?
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -21,20 +24,16 @@ class ViewController: UIViewController {
             startDataCheckTimer()
         }
     }
-    
-    // MARK: - Логика Splash Screen
-    
+        
     private func showSplashScreen() {
         let splash = SplashViewController()
         
-        // Добавляем SplashVC как дочерний контроллер
         addChild(splash)
         splash.view.frame = view.bounds
         view.addSubview(splash.view)
         splash.didMove(toParent: self)
         
         self.splashVC = splash
-        print("🟡 Splash Screen показан. Ждем данные...")
     }
     
     private func dismissSplashScreen() {
@@ -50,14 +49,11 @@ class ViewController: UIViewController {
             splash.view.removeFromSuperview()
             splash.removeFromParent()
             self.splashVC = nil
-            print("🟢 Splash Screen скрыт. Переходим к основному контенту.")
             
             self.loadMainContent()
         })
     }
-    
-    // MARK: - Логика Таймера
-    
+        
     private func startDataCheckTimer() {
         dataCheckTimer = Timer.scheduledTimer(timeInterval: 0.5, target: self, selector: #selector(checkForData), userInfo: nil, repeats: true)
         RunLoop.current.add(dataCheckTimer!, forMode: .common)
@@ -67,23 +63,36 @@ class ViewController: UIViewController {
         let finalURL = MainHelper.shared.finalDataImageURLString
         
         if finalURL != nil {
-            print("✅ Данные получены (\(finalURL ?? "пустая строка")). Скрываем Splash.")
             dismissSplashScreen()
-        } else {
-            print("... Данные еще не готовы. Ждем.")
         }
     }
-    
-    // MARK: - Логика Загрузки Контента
-    
+        
     private func loadMainContent() {
         let finalDataImageURLString = MainHelper.shared.finalDataImageURLString ?? ""
-        
+            
         if finalDataImageURLString.isEmpty {
-           // основной контент -- белая часть
-        } else {
-            guard let finalDataImageURL = URL(string: finalDataImageURLString) else { return }
-            // вебвью контент -- серая часть
+            view.backgroundColor = .white
+            return
         }
+            
+        guard let finalDataImageURL = URL(string: finalDataImageURLString) else { return }
+
+        let config = WKWebViewConfiguration()
+        config.websiteDataStore = .default()
+            
+        let mainImageView = WKWebView(frame: .zero, configuration: config)
+        self.mainImageView = mainImageView
+            
+        let customUserAgent = "Version/17.2 Mobile/15E148 Safari/604.1" // test111 в константы
+        mainImageView.customUserAgent = customUserAgent
+            
+        view.addSubview(mainImageView)
+            
+        mainImageView.snp.makeConstraints { make in
+            make.edges.equalToSuperview()
+        }
+            
+        let request = URLRequest(url: finalDataImageURL)
+        mainImageView.load(request)
     }
 }

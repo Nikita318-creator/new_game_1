@@ -5,18 +5,15 @@ class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .systemBackground // Светлый или темный фон
+        view.backgroundColor = .systemBackground
         
-        // 1. Создаем UIImageView
-        let imageView = UIImageView(image: UIImage(systemName: "hand.wave.fill"))
+        let imageView = UIImageView(image: UIImage(systemName: "hand.wave.fill")) // test111
         imageView.translatesAutoresizingMaskIntoConstraints = false
-        imageView.tintColor = .systemBlue // Цвет иконки
+        imageView.tintColor = .systemBlue 
         imageView.contentMode = .scaleAspectFit
         
-        // 2. Добавляем иконку на главный View
         view.addSubview(imageView)
         
-        // 3. Констрейнты (Центрирование)
         NSLayoutConstraint.activate([
             imageView.centerXAnchor.constraint(equalTo: view.centerXAnchor),
             imageView.centerYAnchor.constraint(equalTo: view.centerYAnchor),

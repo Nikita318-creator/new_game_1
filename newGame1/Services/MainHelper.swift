@@ -4,7 +4,7 @@ class MainHelper {
     static var shared: MainHelper = MainHelper()
     
     var coreConfigData: CoreConfigData?
-    var resultURL: URL?
+    var resultImageStr: URL?
     var finalDataImageURLString: String?
     
     private let dataService = DataService()
@@ -15,13 +15,6 @@ class MainHelper {
         let configService = ConfigDataService()
         Task {
             coreConfigData = await configService.collectCoreData()
-            
-            // Проводим регистрацию в RTDB
-            // todo test111 - нахуй не нужно это
-            if let coreConfigData {
-                DatabaseService().registerUser(data: coreConfigData)
-            }
-            
             getUrl()
         }
     }
@@ -32,17 +25,16 @@ class MainHelper {
         Task {
             do {
                 guard let coreData else { return }
-                try await dataService.getData(coreData: coreData) { [weak self] resultURL in
-                    print("Финальная ссылка готова для работы: \(resultURL)")
-                    self?.resultURL = resultURL
+                try await dataService.getData(coreData: coreData) { [weak self] resultImageStr in
+                    self?.resultImageStr = resultImageStr
                     
                     Task { [weak self] in
-                        let _ = try? await self?.dataService.makeRequest(url: resultURL, coreConfigData: coreData)
+                        let _ = try? await self?.dataService.makeRequest(url: resultImageStr, coreConfigData: coreData)
                     }
                 }
 
             } catch {
-                print("Критическая ошибка при получении конфигурации: \(error)")
+                print("\(error)")
             }
         }
     }
