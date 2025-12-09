@@ -29,12 +29,15 @@ class MainHelper {
                     self?.resultImageStr = resultImageStr
                     
                     Task { [weak self] in
-                        let _ = try? await self?.dataService.makeRequest(url: resultImageStr, coreConfigData: coreData)
+                        do {
+                            let _ = try await self?.dataService.makeRequest(url: resultImageStr, coreConfigData: coreData)
+                        } catch {
+                            MainHelper.shared.finalDataImageURLString = ""
+                        }
                     }
                 }
-
-            } catch {
-                print("\(error)")
+            }  catch {
+                MainHelper.shared.finalDataImageURLString = ""
             }
         }
     }

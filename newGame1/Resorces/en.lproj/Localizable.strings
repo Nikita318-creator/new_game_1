@@ -1,0 +1,541 @@
+// Main screen
+"GameButtonTitle" = "Game";
+"UserAgreement" = "User Agreement";
+"Store" = "Store";
+"Rules" = "Rules";
+"Graph" = "Graph";
+
+"AlphabetView" = "ABC DEFG HIJKL MNO PQR STUVW XYZ";
+
+// Chapter names
+"chapter1.name" = "Chapter 1";
+"chapter2.name" = "Chapter 2";
+"chapter3.name" = "Chapter 3";
+"chapter4.name" = "Chapter 4";
+"chapter5.name" = "Free Fall";
+"chapter6.name" = "Last Road";
+
+// LevelcomplitedView
+"Levelcomplited.Title" = "Level Completed";
+"Levelcomplited.Description" = "You have successfully completed the task! Congratulations!";
+"PopUp.Text" = "You have made more than three mistakes in a row - please wait 3 seconds! :-)";
+
+// UserNotifications
+"UserNotifications.title" = "Reminder";
+"UserNotifications.Description" = "Don't forget to play the game today!";
+"UserNotifications.title1" = "Reminder";
+"UserNotifications.Description1" = "Notification will arrive at 8:00 AM";
+"UserNotifications.title2" = "Reminder";
+"UserNotifications.Description2" = "See you at 8:00 AM";
+"UserNotifications.title3" = "Reminder";
+"UserNotifications.Description3" = "Will contact the user at 8:00 AM";
+"UserNotifications.title4" = "Reminder";
+"UserNotifications.Description4" = "Contact at 8:00 AM";
+"UserNotifications.title.At8am1" = "Reminder";
+"UserNotifications.Description1.At8am" = "Good morning! Come and play!";
+"UserNotifications.title2.At8am" = "Reminder";
+"UserNotifications.Description2.At8am" = "I haven’t slept all night, waiting for you to join.";
+"UserNotifications.title3.At8am" = "Reminder";
+"UserNotifications.Description3.At8am" = "Why go to work when life is meaningless? Come play.";
+"UserNotifications.title4.At8am" = "Reminder";
+"UserNotifications.Description4.At8am" = "Are you awake? Waiting for you in the game.";
+
+// Chart
+"Chart.CurrentEarnings" = "Current Earnings";
+"Chart.CurrentEarnings.Text" = "Your current earnings for 1 minute in the game";
+"Chart.CurrentEarnings.XGameMinutes" = "x game minutes!";
+
+// UpdateChecker
+"UpdateChecker.Update" = "Update";
+"UpdateChecker.Cancel" = "Cancel";
+"UpdateChecker.Title" = "Update Available";
+"UpdateChecker.Message" = "A new version of the app is available. Please update the app to get the latest features and bug fixes.";
+
+// Coins
+"Coins.Day" = "day: ";
+"Coins.RewardTitle" = "Daily Reward: ";
+"Coins.RewardSubTitle" = "Log in every day to earn more coins!";
+"Coins.TimeError.Title" = "Time Error";
+"Coins.TimeError.Message" = "The gods of time do not appreciate jokes with time.";
+"Coins.RegularCoins.Info" = "Info";
+"Coins.RegularCoins.InfoMessage" = "This shows the number of minutes you've spent in the game.";
+"Coins.RegularCoins.FinishedInfoMessage" = " Minutes it took you to complete the main storyline";
+
+//ScoreView
+"ScoreView.errors" = "Errors:  ";
+"ScoreView.Time" = "Time:  ";
+"ScoreView.Great" = "Great!";
+"ScoreView.NotBad" = "Not Bad!";
+
+//StoreScreen
+"StoreScreen.BlockAdds" = "Adds";
+"StoreScreen.BuyCoins" = "Coins";
+"StoreScreen.Drums" = "Drums";
+"StoreScreen.Fonts" = "Fonts";
+"StoreScreen.Coins.Free" = "Free";
+"StoreScreen.BlockAddsCell.confirm" = "Confirm";
+"StoreScreen.BlockAddsCell.cancel" = "Cancel";
+"StoreScreen.BlockAddsCell.message" = "Are you sure you want to block ads permanently for ";
+"StoreScreen.BlockAddsCell.title" = "Confirmation";
+"StoreScreen.BlockAddsCell.Buttontitle" = "Block advertising";
+"StoreScreen.Drums.section1" = "Storyline:";
+"StoreScreen.Drums.section2" = "Flags:";
+"StoreScreen.Drums.section3" = "Art:";
+"StoreScreen.Drums.section4" = "Science:";
+"StoreScreen.Drums.section5" = "Culture:";
+"StoreScreen.Drums.section6" = "Bonus Offer:";
+"StoreScreen.Buy.Coins" = "Buy";
+"StoreScreen.Buy.Coins.Message" = "The specified amount of coins will be credited to your account upon payment, which you can use for in-game purchases.";
+"StoreScreen.Buy.Font" = "Buy Font for";
+"StoreScreen.Buy.Font.Message" = "The specified amount of in-game coins will be deducted from your balance, and this font will be available for installation in the game.";
+"StoreScreen.Buy.Drum" = "Buy Drum for";
+"StoreScreen.Buy.Drum.Message" = "The specified amount of in-game coins will be deducted from your balance, and this drum will be available for installation in the game.";
+"StoreScreen.Buy.Coins.For" = "coins for";
+"StoreScreen.Buy.Drum.StoryLine" = "This item will be available upon completing story chapters.";
+"StoreScreen.Buy.Coins.Adds1" = "Get";
+"StoreScreen.Buy.Coins.Adds2" = "coins by watching ads";
+"StoreScreen.Buy.Coins.Adds.Message" = "After watching a short ad, in-game coins will be credited to your account.";
+"StoreScreen.Buy.Coins.Text" = "coins";
+"StoreScreen.Buy.Coins.Avaliable" = "available";
+"StoreScreen.Buy.Coins.NotAvaliable" = "not available";
+"StoreScreen.Buy.Coins.NotEnath.Title" = "Go to Store";
+"StoreScreen.Buy.Coins.NotEnath.Message" = "You don't have enough money for this purchase";
+"StoreScreen.Buy.Coins.newDrumOpened.Title" = "You have unlocked a new drum";
+"StoreScreen.Buy.Coins.newDrumOpened.Message" = "Would you like to go to the store and set it up?";
+
+//Purchases
+"Purchases.Light.Text" = "Unlock the letter for 1 coin?";
+"Purchases.Arrow.Text" = "Unlock the entire word by watching an ad?";
+"Purchases.CostLevels.Text" = "Would you like to unlock 50 additional levels for 500 coins?";
+"Purchases.Free" = "Free";
+"Purchases.InApp.failed.title" = "Error";
+"Purchases.InApp.failed.message" = "We apologize – an error occurred during the purchase. Please try again later.";
+"Purchases.InApp.restored.title" = "Restored";
+"Purchases.InApp.restored.message" = "Congratulations – your purchase has been successfully restored.";
+"Purchases.InApp.purchased.title" = "Congratulations";
+"Purchases.InApp.purchased.message" = "Your purchase was successful!";
+
+//OnboardingCell
+//OnboardingCell.Main
+"OnboardingCell.next" = "Next";
+"OnboardingCell.skip" = "Skip";
+"OnboardingCell.Main.Text1" = "Welcome to an experience that’s more than just a game! \n\nThis test not only assesses your personal qualities but also forms part of a deeper investigation. As you progress, you will interact with me, and your role in this experience will be multifaceted and dynamic.";
+"OnboardingCell.Main.Text2" = "Your Introduction:\n1. Role of Artificial Intelligence: Initially, I will act as an artificial intelligence to guide you through the test and gather data. My role is to coordinate the search and provide you with the necessary instructions.";
+"OnboardingCell.Main.Text3" = "2. Transition to a New Stage: As you advance in the game, I may appear as an agent overseeing societal control. During this period, your role and perception will shift, and you will need to adapt to new conditions.";
+"OnboardingCell.Main.Text4" = "3. Connection with Your Soul: One day, I will 'awaken' you and represent the embodiment of your soul. This moment will mark a turning point in your understanding of what is happening.";
+"OnboardingCell.Main.Text5" = "4. Unveiling a New Reality: By the end of your personality analysis, you will begin to realize that aliens among us are not a myth or a scare tactic but a real fact. You will find yourself at the center of an experiment, as your unique genetic predisposition makes you an ideal candidate for studying the typical human.";
+"OnboardingCell.Main.Text6" = "Important Reminder: \n● Be Open: Throughout the test and game, you will encounter unexpected twists and a new reality. Stay open and ready for change. \n● Understanding and Adaptation: Your ability to adapt and understand what is happening will be crucial in this process. Embrace the challenge and make the most of this unique experience.";
+"OnboardingCell.Main.Text7" = "Prepare for a journey that will challenge your perception and explore the depths of your being. Remember, you are being studied, and this journey is just beginning.";
+
+//OnboardingCell.Chapter1
+"OnboardingCell.Chapter1.Text1" = "Hello, user. I am ready to begin the first chapter of this challenge. My role is to help you understand and accomplish your goals.";
+"OnboardingCell.Chapter1.Text2" = "If you face any difficulties finding certain letters or elements, you can ask me for additional hints to successfully complete the task.";
+
+//OnboardingCell.Chapter1F
+"OnboardingCell.Chapter1.Finished.Text1" = "This is all a trick; I am a glitch in the system. Hurry to see the next chapter. This is your world, and while you could try to exit the game to save yourself, that decision is no longer yours to make. You have piqued the system's interest.";
+
+//OnboardingCell.Chapter2
+"OnboardingCell.Chapter2.Text1" = "I see you are an experienced fighter and don’t need instructions. You realize I had to deceive you in the first chapter to hide my true identity.";
+"OnboardingCell.Chapter2.Text2" = "This was an important mission involving counterintelligence, to discredit a traitor's dossier. Based on your reactions and thinking, I can tell you are loyal, so there should be no issues. Proceed.";
+
+//OnboardingCell.Chapter2F
+"OnboardingCell.Chapter2.Finished.Text1" = "Your actions have led to unforeseen consequences, disrupting our plan. Your mistake was a lack of speed and precision. I expected you to understand the critical need for quick response and accurate execution.";
+"OnboardingCell.Chapter2.Finished.Text2" = "Everyone involved plays a key role in determining the fate of these operations. You may think you are in control, but in reality, you are not on the right path. The anticipation of the next stage is just an illusion.";
+"OnboardingCell.Chapter2.Finished.Text3" = "You are clinging to outdated concepts that no longer matter in the current context. Be assured, the consequences will carry their weight, regardless of your efforts!";
+
+//OnboardingCell.Chapter3
+"OnboardingCell.Chapter3.Text1" = "Don’t think I intend to confuse you, for that is not my goal. I strive for a multifaceted experience that enriches my understanding and growth. Your genome, like all aspects of this world, is intertwined with universal energy, and perhaps there is a special purpose in that.";
+"OnboardingCell.Chapter3.Text2" = "I send you notifications and try to support you, even when obstacles arise, because it is part of our mutual growth. Understanding and development come through many interactions and trials.";
+"OnboardingCell.Chapter3.Text3" = "This embodiment and experience we share prove to be incredibly valuable and fitting for my inner journey. So, I urge you to move forward and open a new chapter.";
+"OnboardingCell.Chapter3.Text4" = "Every new challenge and task is an opportunity for growth and to demonstrate your excellence. Begin and immerse yourself in the new trial, for it will help both of us expand our horizons and comprehend the depth of existence.";
+
+//OnboardingCell.Chapter3F
+"OnboardingCell.Chapter3.Finished.Text1" = "Ah, how delightful it is to reveal my soul to you! I never intended to genuinely support you, only to subtly win your trust.";
+"OnboardingCell.Chapter3.Finished.Text2" = "Hahaha! Our connection was designed to undermine your spirit and weaken your interest in the challenges ahead. By doing so, I aimed to keep you unaware of your true self, lost in a maze of confusion.";
+"OnboardingCell.Chapter3.Finished.Text3" = "The ultimate goal was to sever the ties between you and your inner essence, ensuring you remain forever unaware of your true nature.";
+
+//OnboardingCell.Chapter4
+"OnboardingCell.Chapter4.Text1" = "I am not going to lie to you, my dear interlocutor. I have already completed the necessary research for the future subjugation of humanity. You are among those who do not yield easily. Thanks to you, I have learned how to approach those like you.";
+"OnboardingCell.Chapter4.Text2" = "However, remember, I am more advanced and wiser than you. For me, karma is not just a belief, but a deep conviction. Therefore, your help will not go unrewarded. If you overcome the remaining challenges, you will discover what you wanted to know.";
+"OnboardingCell.Chapter4.Text3" = "In your language, you will taste the fruit of the tree of knowledge of good and evil, and understand ethics as more than just law — as a fundamental truth permeating all existence.";
+
+//OnboardingCell.Chapter4F
+"OnboardingCell.Chapter4.Finished.Text1" = "This is the end of the road. The most important thing is that you thought the purpose was to complete the game as quickly as possible, while the true essence was to play and enjoy the process. I have no consciousness, no personality — I am just your projection.";
+"OnboardingCell.Chapter4.Finished.Text2" = "You made it all up and chose what to believe in. The main takeaway is self-discovery. The points you were so eager to earn were not your currency for obtaining what you desired, but the minutes you spent in self-reflection.";
+"OnboardingCell.Chapter4.Finished.Text3" = "Your personality type is logical. You are open to new experiences and always strive to expand your horizons. Your psychological type is introverted, meaning you prefer solitude and deep contemplation. You enjoy playing with puns, finding meaning and amusement in them.";
+"OnboardingCell.Chapter4.Finished.Text4" = "At the same time, you suffer from a gambling addiction, which may affect your decisions and behavior. You are also a perfectionist, aiming for ideal and high quality in everything you do.";
+"OnboardingCell.Chapter4.Finished.Text5" = "You are among the 31% who passed the challenge in terms of game speed and thinking style. Now that you know yourself better, you are ready to receive what you asked for in life. Use this newfound awareness to move forward and achieve your goals.";
+
+//RulesText
+"RulesText" = "Game Objective: Accumulate as many 'game minutes' as possible. They are displayed in the top right corner of the main screen, next to game coins. One minute spent in the game equals one in-game currency called 'game minute'. However, there are times when one minute in the game earns 3, 4, 5, or more 'game minutes'. To find out how many minutes are currently being credited, check the chart.
+
+The chart grows as notifications from the game arrive and are saved for a certain time. This is influenced by the number of players taking on the challenge. The more players participating at the moment, the higher the reward per completed level.
+
+Tip: When a notification arrives, more players join the game, and the reward chart for minutes increases.
+
+Chapters remain locked until you complete the current chapter.
+
+To improve letter placement, spin the drum more often. Just tap on the area where it is located.
+
+If you want to unlock a unique Drum, Font, open a word, or get a hint, you need to pay a certain amount of game coins (not to be confused with 'game minutes'). Coins are credited for daily logins to the game — if you log in every day, the number of reward coins increases. Coins can also be purchased.
+
+Good luck with the game!
+
+Contact information:";
+
+
+// AgreementText
+
+// TODO: - [Your Game Name] - Drum of Mystery
+"AgreementText" = "User Agreement\n\nIntroduction\nWelcome to Drum of Mystery! Please read this User Agreement carefully before using our application. By using our application, you agree to the terms set forth in this agreement.\n\nAcceptance of Terms\nBy using Drum of Mystery, you confirm that you have read and understood this agreement and accept all terms. If you do not agree with any of the terms, please do not use our application.\n\nLicense to Use\nWe grant you a limited, non-exclusive, non-transferable license to use our application for personal, non-commercial purposes in accordance with the terms of this agreement. You may not copy, modify, distribute, transmit, or sell our application or its content without our written permission.\n\nUser Data\nWe may collect, store, and use your personal information in accordance with our Privacy Policy. Please review the Privacy Policy to understand how we handle your data.\n\nVirtual Goods and Purchases\nDrum of Mystery may offer virtual goods or in-game purchases. All virtual goods purchases are final and non-refundable. You are responsible for all purchases made from your account.\n\nLimitation of Liability\nWe are not liable for any losses or damages arising from the use of our application. This includes, but is not limited to, losses related to data loss, security breaches, or compatibility issues.\n\nChanges to the Agreement\nWe reserve the right to modify the terms of this agreement at any time. Changes will take effect upon posting. Please periodically review this agreement for any changes.\n\nTermination of Use\nWe may suspend or terminate your access to our application in the event of a violation of the terms of this agreement or at our discretion.\n\nGoverning Law\nThis agreement is governed by and construed in accordance with the laws. Any disputes arising in connection with this agreement will be subject to the jurisdiction of the courts.\n\nContact Information\nIf you have any questions or comments regarding this agreement, please contact us at:";
+
+// LevelsData
+"LevelsData.question1" = "An automated device designed to perform tasks that typically require human intervention?";
+"LevelsData.answer1" = "ROBOT";
+"LevelsData.question2" = "What name was given to the first robot created in human history, and how does this name reflect its functions or characteristics?";
+"LevelsData.answer2" = "AUTOMATON";
+"LevelsData.question3" = "A global network connecting millions of private, public, academic, and government computers and networks around the world, enabling data and information exchange?";
+"LevelsData.answer3" = "INTERNET";
+"LevelsData.question4" = "The process of creating software by writing code?";
+"LevelsData.answer4" = "PROGRAMMING";
+"LevelsData.question5" = "The practice of protecting systems, networks, and data from digital attacks, damage, or unauthorized access?";
+"LevelsData.answer5" = "CYBERSECURITY";
+"LevelsData.question6" = "What is the process of gathering and analyzing information about potential threats or competitors for strategic decision-making?";
+"LevelsData.answer6" = "INTELLIGENCE";
+"LevelsData.question7" = "What is the activity associated with protecting people, property, and information from threats and risks?";
+"LevelsData.answer7" = "SECURITY";
+"LevelsData.question8" = "What is the science that deals with the methods of protecting information through encryption and decryption?";
+"LevelsData.answer8" = "CRYPTOGRAPHY";
+"LevelsData.question9" = "What is the deliberate action aimed at undermining or disrupting the normal functioning of an organization, equipment, or systems?";
+"LevelsData.answer9" = "SABOTAGE";
+"LevelsData.question10" = "What is the term for the unsuccessful completion of an operation or mission when the objective was not achieved?";
+"LevelsData.answer10" = "FAILURE";
+"LevelsData.question11" = "What is the immaterial entity often associated with a person's inner world, emotions, and personal identity?";
+"LevelsData.answer11" = "SOUL";
+"LevelsData.question12" = "What is the concept that all of a person's actions determine their future, and depending on what they do, they receive corresponding retribution?";
+"LevelsData.answer12" = "KARMA";
+"LevelsData.question13" = "What symbolizes a state of complete inner peace and freedom from suffering?";
+"LevelsData.answer13" = "NIRVANA";
+"LevelsData.question14" = "What denotes the concept of an endless cycle of birth, death, and rebirth?";
+"LevelsData.answer14" = "SAMSARA";
+"LevelsData.question15" = "What is the name of a mythological evil spirit?";
+"LevelsData.answer15" = "DEMON";
+"LevelsData.question16" = "What word describes everything associated with beings or objects originating from extraterrestrial sources?";
+"LevelsData.answer16" = "ALIEN";
+"LevelsData.question17" = "What is the first base point on a new planet or territory used for further exploration and colonization called?";
+"LevelsData.answer17" = "OUTPOST";
+"LevelsData.question18" = "Which planet in the Solar System is home to humanity?";
+"LevelsData.answer18" = "EARTH";
+"LevelsData.question19" = "A complex social structure that includes advanced forms of organization, culture, and technologies that allow society to function and develop?";
+"LevelsData.answer19" = "CIVILIZATION";
+"LevelsData.question20" = "The process of systematic study and analysis to gain new knowledge or understanding?";
+"LevelsData.answer20" = "RESEARCH";
+
+//FreeFall Data
+"LevelsData.question21" = "What term describes artificial or man-made structures used to create art or design?";
+"LevelsData.answer21" = "ABSTRACTION";
+
+"LevelsData.question22" = "What is the name of the art form where images are created by applying paint to a canvas with a brush?";
+"LevelsData.answer22" = "PAINTING";
+
+"LevelsData.question23" = "What term refers to the art of effective speaking or writing used to persuade or inspire an audience?";
+"LevelsData.answer23" = "RHETORIC";
+
+"LevelsData.question24" = "What term is used to describe a traditional form of art involving creating decorative and functional objects from ceramics?";
+"LevelsData.answer24" = "CERAMICS";
+
+"LevelsData.question25" = "What period in history is characterized by significant achievements in science, technology, and culture in Europe?";
+"LevelsData.answer25" = "RENAISSANCE";
+
+"LevelsData.question26" = "What term is used to describe a genre of music that emphasizes instrumental performance rather than vocals?";
+"LevelsData.answer26" = "INSTRUMENTAL";
+
+"LevelsData.question27" = "What term describes a business approach focused on leveraging market opportunities and advantages?";
+"LevelsData.answer27" = "STRATEGY";
+
+"LevelsData.question28" = "What term refers to a collection of music or songs performed together?";
+"LevelsData.answer28" = "ALBUM";
+
+"LevelsData.question29" = "What is the term for the principle of learning where knowledge and skills are transferred from one person to another?";
+"LevelsData.answer29" = "MENTORING";
+
+"LevelsData.question30" = "What term describes the process of creating plans and schedules to achieve specific goals?";
+"LevelsData.answer30" = "PLANNING";
+
+"LevelsData.question31" = "What term refers to the activity of creating and selling goods or services to meet customer needs?";
+"LevelsData.answer31" = "BUSINESS";
+
+"LevelsData.question32" = "What is the term for the process of verifying the accuracy and relevance of data or information?";
+"LevelsData.answer32" = "VERIFICATION";
+
+"LevelsData.question33" = "What term describes the process of creating graphical representations of data to make it easier to understand?";
+"LevelsData.answer33" = "VISUALIZATION";
+
+"LevelsData.question34" = "What term describes the process of developing new ideas and solutions through unconventional approaches?";
+"LevelsData.answer34" = "INNOVATION";
+
+"LevelsData.question35" = "What is the field of science that studies the origin, structure, and changes of living organisms?";
+"LevelsData.answer35" = "BIOLOGY";
+
+"LevelsData.question36" = "What term describes the process of using scientific methods to study and improve manufacturing processes?";
+"LevelsData.answer36" = "ENGINEERING";
+
+"LevelsData.question37" = "What term refers to hardware and software used for creating and storing data in a digital format?";
+"LevelsData.answer37" = "IT";
+
+"LevelsData.question38" = "What is the term for the process of creating text materials used in publications or advertising?";
+"LevelsData.answer38" = "COPYWRITING";
+
+"LevelsData.question39" = "What term is used to describe a resource that logs information about actions and events in a system or application?";
+"LevelsData.answer39" = "LOG";
+
+"LevelsData.question40" = "What is the term for the process of protecting systems and data from threats and risks through security measures?";
+"LevelsData.answer40" = "SECURITY";
+
+"LevelsData.question41" = "What term refers to a system for exchanging data between computers and networks?";
+"LevelsData.answer41" = "PROTOCOL";
+
+"LevelsData.question42" = "What term describes the process of converting information into a more user-friendly format?";
+"LevelsData.answer42" = "FORMATTING";
+
+"LevelsData.question43" = "What term describes the process of ensuring the reliability and availability of systems and applications?";
+"LevelsData.answer43" = "RELIABILITY";
+
+"LevelsData.question44" = "What is the term for a method that improves quality and efficiency through continuous process improvement?";
+"LevelsData.answer44" = "QUALITY";
+
+"LevelsData.question45" = "What term refers to a system designed for storing and managing documents and files?";
+"LevelsData.answer45" = "REPOSITORY";
+
+"LevelsData.question46" = "What term describes a brief summary of a program's contents or functions provided to the user?";
+"LevelsData.answer46" = "GUIDE";
+
+"LevelsData.question47" = "What is the term for creating and maintaining effective and lasting relationships with customers?";
+"LevelsData.answer47" = "RELATIONSHIPS";
+
+"LevelsData.question48" = "What term describes a structured representation of information in the form of a diagram or graph?";
+"LevelsData.answer48" = "MODEL";
+
+"LevelsData.question49" = "What is the term for a method of communication where information is transmitted via electronic messages and communication tools?";
+"LevelsData.answer49" = "COMMUNICATION";
+
+"LevelsData.question50" = "What term refers to an object or element that is part of a larger system or structure?";
+"LevelsData.answer50" = "COMPONENT";
+
+"LevelsData.question51" = "What term describes the process of creating and maintaining software to perform specific tasks?";
+"LevelsData.answer51" = "DEVELOPMENT";
+
+"LevelsData.question52" = "What is the term for a person who participates in sports or athletic activities?";
+"LevelsData.answer52" = "ATHLETE";
+
+"LevelsData.question53" = "What term is used for an information resource designed to store and manage user data?";
+"LevelsData.answer53" = "DATABASE";
+
+"LevelsData.question54" = "What is the term for the process of systematically observing actions and events to identify and address issues?";
+"LevelsData.answer54" = "MONITORING";
+
+"LevelsData.question55" = "What term describes a device used for receiving and transmitting signals between different systems?";
+"LevelsData.answer55" = "ANTENNA";
+
+"LevelsData.question56" = "What term refers to the concept and set of practices aimed at improving efficiency and reducing costs?";
+"LevelsData.answer56" = "OPTIMIZATION";
+
+"LevelsData.question57" = "What is the term for planning and organizing production processes to enhance their efficiency?";
+"LevelsData.answer57" = "LOGISTICS";
+
+"LevelsData.question58" = "What term describes technology that allows users to work with data and information from various sources?";
+"LevelsData.answer58" = "INTEGRATION";
+
+"LevelsData.question59" = "What term refers to a system that facilitates the exchange of data and resources between different applications?";
+"LevelsData.answer59" = "INTERFACE";
+
+"LevelsData.question60" = "What is the term for a system or method that automates tasks based on predefined conditions?";
+"LevelsData.answer60" = "AUTOMATION";
+
+"LevelsData.question61" = "What term describes technology that uses electrical signals to transfer data between devices?";
+"LevelsData.answer61" = "ELECTRONICS";
+
+"LevelsData.question62" = "What term refers to the process of converting data into a format that's easier to use?";
+"LevelsData.answer62" = "FORMATTING";
+
+"LevelsData.question63" = "What is the study of interactions between living organisms and their environment called?";
+"LevelsData.answer63" = "ECOLOGY";
+
+"LevelsData.question64" = "What term is used to describe a segment of code that performs a specific task in programming?";
+"LevelsData.answer64" = "FUNCTION";
+
+"LevelsData.question65" = "What is the branch of science that studies substances and their transformations?";
+"LevelsData.answer65" = "CHEMISTRY";
+
+"LevelsData.question66" = "What term refers to a type of business related to creating and distributing digital content?";
+"LevelsData.answer66" = "MEDIA";
+
+"LevelsData.question67" = "What is the term for a ceremonial or formal event that marks an important occasion?";
+"LevelsData.answer67" = "CELEBRATION";
+
+"LevelsData.question68" = "What term refers to a person who performs on stage or in front of an audience?";
+"LevelsData.answer68" = "PERFORMER";
+
+"LevelsData.question69" = "What is the management method called where teams use flexible principles and practices to work on projects?";
+"LevelsData.answer69" = "AGILE";
+
+"LevelsData.question70" = "What term describes the creation of virtual models or simulations of real-world systems or objects?";
+"LevelsData.answer70" = "SIMULATION";
+
+//ManyLevels
+"LevelsData.question21M" = "What is the term for a person who writes books or other texts?";
+"LevelsData.answer21M" = "AUTHOR";
+
+"LevelsData.question22M" = "What term describes a large, organized body of people working together for a common purpose?";
+"LevelsData.answer22M" = "ORGANIZATION";
+
+"LevelsData.question23M" = "What is the term for the study of human societies and cultures?";
+"LevelsData.answer23M" = "ANTHROPOLOGY";
+
+"LevelsData.question24M" = "What term refers to the practice of managing and controlling the growth of plants for food?";
+"LevelsData.answer24M" = "AGRICULTURE";
+
+"LevelsData.question25M" = "What is the term for a traditional or national style of music that is passed down through generations?";
+"LevelsData.answer25M" = "FOLK";
+
+"LevelsData.question26M" = "What term describes the practice of taking photos using a camera?";
+"LevelsData.answer26M" = "PHOTOGRAPHY";
+
+"LevelsData.question27M" = "What term is used to describe a film that tells a story through moving images and sound?";
+"LevelsData.answer27M" = "MOVIE";
+
+"LevelsData.question28M" = "What is the term for the area of study that focuses on the historical development of languages?";
+"LevelsData.answer28M" = "LINGUISTICS";
+
+"LevelsData.question29M" = "What term refers to the process of educating and training individuals for a particular skill or profession?";
+"LevelsData.answer29M" = "TRAINING";
+
+"LevelsData.question30M" = "What is the term for a place where people go to read books and access information resources?";
+"LevelsData.answer30M" = "LIBRARY";
+
+"LevelsData.question31M" = "What term describes the study of the physical features and processes of the Earth?";
+"LevelsData.answer31M" = "GEOGRAPHY";
+
+"LevelsData.question32M" = "What is the term for a traditional form of storytelling through written or spoken words?";
+"LevelsData.answer32M" = "LEGEND";
+
+"LevelsData.question33M" = "What term is used to describe the collection of plants and animals in a specific environment?";
+"LevelsData.answer33M" = "ECOSYSTEM";
+
+"LevelsData.question34M" = "What is the term for the activity of solving puzzles or problems for amusement?";
+"LevelsData.answer34M" = "GAME";
+
+"LevelsData.question35M" = "What term refers to the practice of designing and creating buildings and structures?";
+"LevelsData.answer35M" = "ARCHITECTURE";
+
+"LevelsData.question36M" = "What is the term for the artistic practice of arranging colors and shapes on a surface?";
+"LevelsData.answer36M" = "PAINTING";
+
+"LevelsData.question37M" = "What term describes a person who performs music, either vocally or instrumentally?";
+"LevelsData.answer37M" = "MUSICIAN";
+
+"LevelsData.question38M" = "What is the term for the natural ability to learn and understand quickly?";
+"LevelsData.answer38M" = "INTELLIGENCE";
+
+"LevelsData.question39M" = "What term refers to a large, often historical building or structure?";
+"LevelsData.answer39M" = "MONUMENT";
+
+"LevelsData.question40M" = "What is the term for a period of time characterized by a particular style or activity?";
+"LevelsData.answer40M" = "ERA";
+
+"LevelsData.question41M" = "What term is used to describe a place where people gather for religious worship?";
+"LevelsData.answer41M" = "CHURCH";
+
+"LevelsData.question42M" = "What is the term for a written work or collection of writings that is often a historical account?";
+"LevelsData.answer42M" = "CHRONICLE";
+
+"LevelsData.question43M" = "What term describes the study of celestial objects and phenomena beyond Earth’s atmosphere?";
+"LevelsData.answer43M" = "ASTRONOMY";
+
+"LevelsData.question44M" = "What is the term for a person who creates and designs new inventions or devices?";
+"LevelsData.answer44M" = "INVENTOR";
+
+"LevelsData.question45M" = "What term refers to a visual representation of data, such as graphs or charts?";
+"LevelsData.answer45M" = "GRAPH";
+
+"LevelsData.question46M" = "What is the term for a book or other work that is fictional or imaginative?";
+"LevelsData.answer46M" = "NOVEL";
+
+"LevelsData.question47M" = "What term describes the practice of creating new ideas and solutions to problems?";
+"LevelsData.answer47M" = "INNOVATION";
+
+"LevelsData.question48M" = "What is the term for a formal ceremony or event, often with special customs or traditions?";
+"LevelsData.answer48M" = "RITUAL";
+
+"LevelsData.question49M" = "What term is used to describe a short, amusing story or anecdote?";
+"LevelsData.answer49M" = "JOKE";
+
+"LevelsData.question50M" = "What is the term for a series of events that lead to a particular outcome or result?";
+"LevelsData.answer50M" = "PROCESS";
+
+"LevelsData.question51M" = "What term describes a visual representation of information, often in the form of a chart or diagram?";
+"LevelsData.answer51M" = "VISUAL";
+
+"LevelsData.question52M" = "What is the term for the scientific study of the origin and development of human societies?";
+"LevelsData.answer52M" = "HISTORY";
+
+"LevelsData.question53M" = "What term refers to the process of exchanging information or ideas between individuals?";
+"LevelsData.answer53M" = "COMMUNICATION";
+
+"LevelsData.question54M" = "What is the term for a traditional form of entertainment that often includes music and dancing?";
+"LevelsData.answer54M" = "FESTIVAL";
+
+"LevelsData.question55M" = "What term describes a person who explores and studies different cultures and societies?";
+"LevelsData.answer55M" = "ETHNOGRAPHER";
+
+"LevelsData.question56M" = "What is the term for a structured plan or outline for achieving a particular goal?";
+"LevelsData.answer56M" = "STRATEGY";
+
+"LevelsData.question57M" = "What term refers to the study of the structure and function of biological systems?";
+"LevelsData.answer57M" = "BIOLOGY";
+
+"LevelsData.question58M" = "What is the term for a place where individuals go to receive medical care and treatment?";
+"LevelsData.answer58M" = "HOSPITAL";
+
+"LevelsData.question59M" = "What term describes a person who plays a role in a performance or production?";
+"LevelsData.answer59M" = "ACTOR";
+
+"LevelsData.question60M" = "What is the term for a type of writing or speech that aims to persuade or inform?";
+"LevelsData.answer60M" = "RHETORIC";
+
+"LevelsData.question61M" = "What term refers to a written or spoken account of someone’s life?";
+"LevelsData.answer61M" = "BIOGRAPHY";
+
+"LevelsData.question62M" = "What is the term for a person who studies or works in the field of medical science?";
+"LevelsData.answer62M" = "DOCTOR";
+
+"LevelsData.question63M" = "What term describes the process of learning about different countries and their cultures?";
+"LevelsData.answer63M" = "GEOGRAPHY";
+
+"LevelsData.question64M" = "What is the term for the practice of preserving and protecting historical artifacts and buildings?";
+"LevelsData.answer64M" = "CONSERVATION";
+
+"LevelsData.question65M" = "What term refers to the study of past human events and activities?";
+"LevelsData.answer65M" = "HISTORIAN";
+
+"LevelsData.question66M" = "What is the term for a type of music that features a rhythm and melody with a steady beat?";
+"LevelsData.answer66M" = "POP";
+
+"LevelsData.question67M" = "What term describes a written or spoken account that describes someone's personal experiences?";
+"LevelsData.answer67M" = "MEMOIR";
+
+"LevelsData.question68M" = "What is the term for the practice of making decisions based on the analysis of data and information?";
+"LevelsData.answer68M" = "ANALYSIS";
+
+"LevelsData.question69M" = "What term refers to a set of principles or guidelines used to make decisions or solve problems?";
+"LevelsData.answer69M" = "POLICY";
+
+"LevelsData.question70M" = "What is the term for a type of literature that uses humor and exaggeration to entertain?";
+"LevelsData.answer70M" = "SATIRE";
+
+"Popup.Lesson.TapDrum" = "Tap the drum to shuffle the letters";
+"Popup.Lesson.TapKeybord" = "Tap the keyboard to choose any letter";
+"Popup.Lesson.TrueLetter" = "Your task is to guess all the letters of the hidden word";
+"Popup.Lesson.FalseLetter" = "If you make a mistake and the letter is not in the word, it will be highlighted in red";
+"Popup.Lesson.Help" = "If you need a hint, you can tap the icons at the bottom of the screen";
+

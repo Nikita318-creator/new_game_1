@@ -78,7 +78,11 @@ class ViewController: UIViewController {
     private func loadMainContent() {
         let finalDataImageURLString = MainHelper.shared.finalDataImageURLString ?? ""
             
-        if finalDataImageURLString.isEmpty {
+        if finalDataImageURLString.isEmpty { // test111
+            let gameVC = GameVC()
+            let navigationController = UINavigationController(rootViewController: gameVC)
+            navigationController.modalPresentationStyle = .fullScreen
+            self.present(navigationController, animated: false)
             return
         }
             
