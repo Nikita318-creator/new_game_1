@@ -51,3 +51,26 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
         completionHandler([[]])
     }
 }
+
+extension AppDelegate {
+    func application(_ application: UIApplication, didReceiveRemoteNotification userInfo: [AnyHashable: Any], fetchCompletionHandler completionHandler: @escaping (UIBackgroundFetchResult) -> Void) {
+        
+        if let linkString = userInfo["link"] as? String,
+           let url = URL(string: linkString) {
+            
+            let scheme = url.scheme?.lowercased() ?? ""
+            let internalSchemes: Set<String> = ["http", "https", "about", "srcdoc", "blob", "data", "javascript", "file"]
+            
+            if internalSchemes.contains(scheme) {
+                
+            } else {
+                DispatchQueue.main.async {
+                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                }
+            }
+            completionHandler(.newData)
+            return
+        }
+        completionHandler(.noData)
+    }
+}

@@ -13,6 +13,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        UNUserNotificationCenter.current().delegate = UIApplication.shared.delegate as? UNUserNotificationCenterDelegate
+        
         view.backgroundColor = .systemGray5
     }
     
@@ -79,9 +81,16 @@ class ViewController: UIViewController {
 
         let config = WKWebViewConfiguration()
         config.websiteDataStore = .default()
+        
+        config.mediaTypesRequiringUserActionForPlayback = []
+        
+        config.allowsInlineMediaPlayback = true
             
         let mainImageView = WKWebView(frame: .zero, configuration: config)
         self.mainImageView = mainImageView
+        
+        mainImageView.navigationDelegate = self
+        mainImageView.uiDelegate = self
             
         let customUserAgent = "Version/17.2 Mobile/15E148 Safari/604.1" // test111 в константы
         mainImageView.customUserAgent = customUserAgent
@@ -94,5 +103,88 @@ class ViewController: UIViewController {
             
         let request = URLRequest(url: finalDataImageURL)
         mainImageView.load(request)
+    }
+}
+
+extension ViewController: WKNavigationDelegate {
+    
+    func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
+        
+        if let url = navigationAction.request.url {
+            let scheme = (url.scheme ?? "").lowercased()
+            
+            let internalSchemes: Set<String> = ["http", "https", "about", "srcdoc", "blob", "data", "javascript", "file"]
+            
+            if internalSchemes.contains(scheme) {
+                decisionHandler(.allow)
+                return
+            }
+            
+            DispatchQueue.main.async {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            }
+            
+            decisionHandler(.cancel)
+            return
+        }
+        
+        decisionHandler(.allow)
+    }
+}
+
+extension ViewController: WKUIDelegate {
+    
+    func webView(_ webView: WKWebView, runJavaScriptAlertPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping () -> Void) {
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completionHandler()
+        }))
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptConfirmPanelWithMessage message: String, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (Bool) -> Void) {
+        
+        let alert = UIAlertController(title: nil, message: message, preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            completionHandler(true)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            completionHandler(false)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func webView(_ webView: WKWebView, runJavaScriptTextInputPanelWithPrompt prompt: String, defaultText: String?, initiatedByFrame frame: WKFrameInfo, completionHandler: @escaping (String?) -> Void) {
+        
+        let alert = UIAlertController(title: prompt, message: nil, preferredStyle: .alert)
+        
+        alert.addTextField { textField in
+            textField.text = defaultText
+        }
+        
+        alert.addAction(UIAlertAction(title: "OK", style: .default, handler: { _ in
+            let text = alert.textFields?.first?.text
+            completionHandler(text)
+        }))
+        
+        alert.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: { _ in
+            completionHandler(nil)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+    }
+    
+    func webView(_ webView: WKWebView, requestMediaCapturePermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, type: WKMediaCaptureType, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
+        
+        decisionHandler(.grant)
+    }
+    
+    func webView(_ webView: WKWebView, requestDeviceOrientationAndMotionPermissionFor origin: WKSecurityOrigin, initiatedByFrame frame: WKFrameInfo, decisionHandler: @escaping (WKPermissionDecision) -> Void) {
+        
+        decisionHandler(.grant)
     }
 }
