@@ -72,41 +72,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         label.textColor = .white
         return label
     }()
-
-    // Иконка лампочки
-     private let lightbulbImageView: UIImageView = {
-         let imageView = UIImageView(image: UIImage(systemName: "lightbulb"))
-         imageView.contentMode = .scaleAspectFit
-         imageView.tintColor = UIColor(red: 255/255, green: 140/255, blue: 0/255, alpha: 1.0)
-         imageView.isUserInteractionEnabled = true // Включаем взаимодействие
-         return imageView
-     }()
-     
-    private let lightbulbImageViewFill: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "lightbulb.fill"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.tintColor = UIColor(red: 255/255, green: 204/255, blue: 0/255, alpha: 0.5)
-        imageView.isUserInteractionEnabled = true // Включаем взаимодействие
-        return imageView
-    }()
-    
-     // Иконка "открыть"
-     private let openImageView: UIImageView = {
-         let imageView = UIImageView(image: UIImage(systemName: "arrow.right.circle"))
-         imageView.contentMode = .scaleAspectFit
-         imageView.isUserInteractionEnabled = true // Включаем взаимодействие
-         imageView.tintColor = UIColor(red: 75/255, green: 0/255, blue: 130/255, alpha: 1.0)
-         return imageView
-     }()
-    
-    private let openImageViewFill: UIImageView = {
-        let imageView = UIImageView(image: UIImage(systemName: "arrow.right.circle.fill"))
-        imageView.contentMode = .scaleAspectFit
-        imageView.isUserInteractionEnabled = true // Включаем взаимодействие
-        imageView.tintColor = UIColor(red: 106/255, green: 90/255, blue: 205/255, alpha: 0.5)
-
-        return imageView
-    }()
     
     private var timer: Timer?
     private var startTime: Date?
@@ -114,11 +79,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        if !PurchasedLogicHelper.shared.getShowAdds() {
-//            loadInterstitialAd()
-        }
-//        loadRewardedAdRevard()
 
         view.backgroundColor = .white
         setupQuestionLabel()
@@ -127,7 +87,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         setupAlpabetView()
         setupAnimatedLabel()
         addTapGestureToImageView()
-        setupHelpButtons()
         
         alpabetView.cellTapedHandler = { [weak self] letter in
             guard let self else { return true }
@@ -153,43 +112,11 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
                         GameLogicHelper.shared.saveGameLesson(true)
                     }
                 }
-                
-                if popUpLessonView.isTrueTapped {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.popUpLessonView.setup(text: "Popup.Lesson.TrueLetter".localized())
-                        self.popUpLessonView.show()
-                        self.popUpLessonView.isTrueTapped = false
-                    }
-                }
                     
                 return true
             } else {
                 self.errorsCount += 1
-//                //TODO: delete
-//                finishedLevel()
-                
-                if popUpLessonView.isFalseTapped {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        self.popUpLessonView.setup(text: "Popup.Lesson.FalseLetter".localized())
-                        self.popUpLessonView.show(isNeedHide: false)
-                        self.popUpLessonView.isFalseTapped = false
-                    }
-                    
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-                        self.popUpLessonView.hide()
-                        
-                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                            self.popUpLessonView.setup(text: "Popup.Lesson.Help".localized())
-                            self.popUpLessonView.show(isNeedHide: false)
-                            self.popUpLessonView.isHelpTapped = true
-                            self.lightbulbImageView.layer.borderColor = UIColor.systemGreen.withAlphaComponent(0.7).cgColor
-                            self.lightbulbImageView.layer.borderWidth = 5
-                            self.openImageView.layer.borderColor = UIColor.systemGreen.withAlphaComponent(0.7).cgColor
-                            self.openImageView.layer.borderWidth = 5
-                        }
-                    }
-                }
-                
+
                 return false
             }
         }
@@ -206,18 +133,7 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         
         barabanImageView.image = barabanImage
         
-        if PurchasedLogicHelper.shared.getNewDrumAvailable() {
-            PurchasedLogicHelper.shared.saveNewDrumAvailable(false)
-            showAlert(title: "StoreScreen.Buy.Coins.newDrumOpened.Title".localized(), message: "StoreScreen.Buy.Coins.newDrumOpened.Message".localized()) { [weak self] in
-                let storeScreenVC = StoreScreenVC()
-                storeScreenVC.isNeedScrollToDrums = true
-                self?.navigationController?.pushViewController(storeScreenVC, animated: true)
-            }
-        }
-        
-        if !GameLogicHelper.shared.getGameLesson() {
-//            GameLogicHelper.shared.saveGameLesson(true) // TODO: - можно уже тут сообщить что урок пройден
-            
+        if !GameLogicHelper.shared.getGameLesson() {            
             popUpLessonView.setup(text: "Popup.Lesson.TapDrum".localized())
             popUpLessonView.show(isNeedHide: false)
             barabanImageView.layer.borderColor = UIColor.systemGreen.withAlphaComponent(0.7).cgColor
@@ -228,7 +144,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
-        // Останавливаем таймер
         timer?.invalidate()
         timer = nil
         popUpLessonView.hide()
@@ -236,14 +151,12 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
     
     private func showPopUp() {
         let popUpView = PopUpView()
-        popUpView.setup(text: "PopUp.Text".localized()) // Настраиваем попап
-        popUpView.show()  // Показываем попап
+        popUpView.setup(text: "PopUp.Text".localized())
+        popUpView.show()
     }
     
     private func startTimer() {
-        // Сохраняем время начала
         startTime = Date()
-        // Запускаем таймер, который будет вызываться каждую секунду
         timer = Timer.scheduledTimer(timeInterval: 1.0, target: self, selector: #selector(updateTimer), userInfo: nil, repeats: true)
     }
     
@@ -260,7 +173,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         let currentTime = Date()
         let elapsedTime = currentTime.timeIntervalSince(startTime)
         
-        // Останавливаем таймер
         timer?.invalidate()
         timer = nil
         
@@ -330,41 +242,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(handleTap))
         barabanImageView.addGestureRecognizer(tapGesture)
     }
-
-    private func setupHelpButtons() {
-        view.addSubview(lightbulbImageViewFill)
-        view.addSubview(lightbulbImageView)
-        view.addSubview(openImageViewFill)
-        view.addSubview(openImageView)
-        
-        // Установка констрейнтов для иконок
-        lightbulbImageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().offset(35)
-            make.bottom.equalToSuperview().inset(30)
-            make.size.equalTo(CGSize(width: 50, height: 50)) // Установите размер по вашему усмотрению
-        }
-        
-        lightbulbImageViewFill.snp.makeConstraints { make in
-            make.edges.equalTo(lightbulbImageView)
-        }
-        
-        openImageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview().offset(-35)
-            make.bottom.equalToSuperview().inset(30)
-            make.size.equalTo(CGSize(width: 50, height: 50)) // Установите размер по вашему усмотрению
-        }
-        
-        openImageViewFill.snp.makeConstraints { make in
-            make.edges.equalTo(openImageView)
-        }
-        
-        let tapLight = UITapGestureRecognizer(target: self, action: #selector(handleTapLight)) // to open Letter
-        lightbulbImageView.addGestureRecognizer(tapLight)
-        let tapOpenWord = UITapGestureRecognizer(target: self, action: #selector(handleTapOpenWord))
-        openImageView.addGestureRecognizer(tapOpenWord)
-        
-        view.layoutIfNeeded()
-    }
     
     @objc private func handleTap() {
         rotateImageView()
@@ -383,53 +260,6 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
                 self.alpabetView.layer.borderWidth = 5
                 self.popUpLessonView.isKeyboardTapped = true
             }
-        }
-    }
-
-    @objc private func handleTapLight() {
-        showAlert(title: "Purchases.Light.Text".localized(), message: "") { [weak self] in
-            guard let self else { return }
-            
-            if CoinsHelper.shared.getSpecialCoins() >= 1, let letter = answerText.first {
-                answerText = answerText.replacingOccurrences(of: String(letter), with: "")
-                CoinsHelper.shared.saveSpecialCoins(CoinsHelper.shared.getSpecialCoins() - 1)
-                // Добавляем логику для анимации появления буквы
-                self.showAnimatedLabel(with: String(letter))
-                handleTap()
-                
-                if answerText.isEmpty {
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 2) {
-                        self.finishedLevel()
-                    }
-                }
-            } else {
-                showAlertNotEnothMoney()
-            }
-        }
-        
-        helpTapped()
-    }
-    
-    @objc private func handleTapOpenWord() {
-        showAlert(title: "Purchases.Arrow.Text".localized(), message: "") { [weak self] in
-            // TODO: - показ рекламы
-
-//            self?.showRewardedAdRevard()
-        }
-        
-        helpTapped()
-    }
-    
-    private func helpTapped() {
-        if popUpLessonView.isHelpTapped {
-            self.popUpLessonView.hide()
-            self.popUpLessonView.isHelpTapped = false
-            self.lightbulbImageView.layer.borderColor = nil
-            self.lightbulbImageView.layer.borderWidth = 0
-            self.openImageView.layer.borderColor = nil
-            self.openImageView.layer.borderWidth = 0
-            
-            GameLogicHelper.shared.saveGameLesson(true)
         }
     }
     

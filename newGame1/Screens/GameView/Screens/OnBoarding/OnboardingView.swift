@@ -57,10 +57,8 @@ class OnboardingView: UIView {
         gradientLayer.colors = [
             UIColor.blue.cgColor,
             UIColor.cyan.cgColor,
-            UIColor.lightBlue.cgColor,
             UIColor.purple.cgColor,
             UIColor.magenta.cgColor,
-            UIColor.darkBlue.cgColor
         ]
         gradientLayer.locations = [0.0, 0.2, 0.4, 0.6, 0.8, 1.0] // Отношения для расположения цветов
 

@@ -1,47 +1,55 @@
-// Main screen
+"OnboardingCell.next" = "Next";
+"OnboardingCell.skip" = "Skip";
+"OnboardingCell.Main.Text1" = "Welcome to an experience that’s more than just a game! \n\nThis test not only assesses your personal qualities but also forms part of a deeper investigation. As you progress, you will interact with me, and your role in this experience will be multifaceted and dynamic.";
+"OnboardingCell.Main.Text2" = "Your Introduction:\n1. Role of Artificial Intelligence: Initially, I will act as an artificial intelligence to guide you through the test and gather data. My role is to coordinate the search and provide you with the necessary instructions.";
+"OnboardingCell.Main.Text3" = "2. Transition to a New Stage: As you advance in the game, I may appear as an agent overseeing societal control. During this period, your role and perception will shift, and you will need to adapt to new conditions.";
+"OnboardingCell.Main.Text4" = "3. Connection with Your Soul: One day, I will 'awaken' you and represent the embodiment of your soul. This moment will mark a turning point in your understanding of what is happening.";
+"OnboardingCell.Main.Text5" = "4. Unveiling a New Reality: By the end of your personality analysis, you will begin to realize that aliens among us are not a myth or a scare tactic but a real fact. You will find yourself at the center of an experiment, as your unique genetic predisposition makes you an ideal candidate for studying the typical human.";
+"OnboardingCell.Main.Text6" = "Important Reminder: \n● Be Open: Throughout the test and game, you will encounter unexpected twists and a new reality. Stay open and ready for change. \n● Understanding and Adaptation: Your ability to adapt and understand what is happening will be crucial in this process. Embrace the challenge and make the most of this unique experience.";
+"OnboardingCell.Main.Text7" = "Prepare for a journey that will challenge your perception and explore the depths of your being. Remember, you are being studied, and this journey is just beginning.";
+
+"OnboardingCell.Chapter1.Text1" = "Hello, user. I am ready to begin the first chapter of this challenge. My role is to help you understand and accomplish your goals.";
+"OnboardingCell.Chapter1.Text2" = "If you face any difficulties finding certain letters or elements, you can ask me for additional hints to successfully complete the task.";
+
+"OnboardingCell.Chapter1.Finished.Text1" = "This is all a trick; I am a glitch in the system. Hurry to see the next chapter. This is your world, and while you could try to exit the game to save yourself, that decision is no longer yours to make. You have piqued the system's interest.";
+
+"OnboardingCell.Chapter2.Text1" = "I see you are an experienced fighter and don’t need instructions. You realize I had to deceive you in the first chapter to hide my true identity.";
+"OnboardingCell.Chapter2.Text2" = "This was an important mission involving counterintelligence, to discredit a traitor's dossier. Based on your reactions and thinking, I can tell you are loyal, so there should be no issues. Proceed.";
+
+"OnboardingCell.Chapter2.Finished.Text1" = "Your actions have led to unforeseen consequences, disrupting our plan. Your mistake was a lack of speed and precision. I expected you to understand the critical need for quick response and accurate execution.";
+"OnboardingCell.Chapter2.Finished.Text2" = "Everyone involved plays a key role in determining the fate of these operations. You may think you are in control, but in reality, you are not on the right path. The anticipation of the next stage is just an illusion.";
+"OnboardingCell.Chapter2.Finished.Text3" = "You are clinging to outdated concepts that no longer matter in the current context. Be assured, the consequences will carry their weight, regardless of your efforts!";
+
+"OnboardingCell.Chapter3.Text1" = "Don’t think I intend to confuse you, for that is not my goal. I strive for a multifaceted experience that enriches my understanding and growth. Your genome, like all aspects of this world, is intertwined with universal energy, and perhaps there is a special purpose in that.";
+"OnboardingCell.Chapter3.Text2" = "I send you notifications and try to support you, even when obstacles arise, because it is part of our mutual growth. Understanding and development come through many interactions and trials.";
+"OnboardingCell.Chapter3.Text3" = "This embodiment and experience we share prove to be incredibly valuable and fitting for my inner journey. So, I urge you to move forward and open a new chapter.";
+"OnboardingCell.Chapter3.Text4" = "Every new challenge and task is an opportunity for growth and to demonstrate your excellence. Begin and immerse yourself in the new trial, for it will help both of us expand our horizons and comprehend the depth of existence.";
+
+"OnboardingCell.Chapter3.Finished.Text1" = "Ah, how delightful it is to reveal my soul to you! I never intended to genuinely support you, only to subtly win your trust.";
+"OnboardingCell.Chapter3.Finished.Text2" = "Hahaha! Our connection was designed to undermine your spirit and weaken your interest in the challenges ahead. By doing so, I aimed to keep you unaware of your true self, lost in a maze of confusion.";
+"OnboardingCell.Chapter3.Finished.Text3" = "The ultimate goal was to sever the ties between you and your inner essence, ensuring you remain forever unaware of your true nature.";
+
+"OnboardingCell.Chapter4.Text1" = "I am not going to lie to you, my dear interlocutor. I have already completed the necessary research for the future subjugation of humanity. You are among those who do not yield easily. Thanks to you, I have learned how to approach those like you.";
+"OnboardingCell.Chapter4.Text2" = "However, remember, I am more advanced and wiser than you. For me, karma is not just a belief, but a deep conviction. Therefore, your help will not go unrewarded. If you overcome the remaining challenges, you will discover what you wanted to know.";
+"OnboardingCell.Chapter4.Text3" = "In your language, you will taste the fruit of the tree of knowledge of good and evil, and understand ethics as more than just law — as a fundamental truth permeating all existence.";
+
+"OnboardingCell.Chapter4.Finished.Text1" = "This is the end of the road. The most important thing is that you thought the purpose was to complete the game as quickly as possible, while the true essence was to play and enjoy the process. I have no consciousness, no personality — I am just your projection.";
+"OnboardingCell.Chapter4.Finished.Text2" = "You made it all up and chose what to believe in. The main takeaway is self-discovery. The points you were so eager to earn were not your currency for obtaining what you desired, but the minutes you spent in self-reflection.";
+"OnboardingCell.Chapter4.Finished.Text3" = "Your personality type is logical. You are open to new experiences and always strive to expand your horizons. Your psychological type is introverted, meaning you prefer solitude and deep contemplation. You enjoy playing with puns, finding meaning and amusement in them.";
+"OnboardingCell.Chapter4.Finished.Text4" = "At the same time, you suffer from a gambling addiction, which may affect your decisions and behavior. You are also a perfectionist, aiming for ideal and high quality in everything you do.";
+"OnboardingCell.Chapter4.Finished.Text5" = "You are among the 31% who passed the challenge in terms of game speed and thinking style. Now that you know yourself better, you are ready to receive what you asked for in life. Use this newfound awareness to move forward and achieve your goals.";
+
 "GameButtonTitle" = "Game";
 "UserAgreement" = "User Agreement";
 "Store" = "Store";
-"Rules" = "Rules";
-"Graph" = "Graph";
 
 "AlphabetView" = "ABC DEFG HIJKL MNO PQR STUVW XYZ";
 
-// Chapter names
 
-
-// LevelcomplitedView
 "Levelcomplited.Title" = "Level Completed";
 "Levelcomplited.Description" = "You have successfully completed the task! Congratulations!";
 "PopUp.Text" = "You have made more than three mistakes in a row - please wait 3 seconds! :-)";
 
-// UserNotifications
-"UserNotifications.title" = "Reminder";
-"UserNotifications.Description" = "Don't forget to play the game today!";
-"UserNotifications.title1" = "Reminder";
-"UserNotifications.Description1" = "Notification will arrive at 8:00 AM";
-"UserNotifications.title2" = "Reminder";
-"UserNotifications.Description2" = "See you at 8:00 AM";
-"UserNotifications.title3" = "Reminder";
-"UserNotifications.Description3" = "Will contact the user at 8:00 AM";
-"UserNotifications.title4" = "Reminder";
-"UserNotifications.Description4" = "Contact at 8:00 AM";
-"UserNotifications.title.At8am1" = "Reminder";
-"UserNotifications.Description1.At8am" = "Good morning! Come and play!";
-"UserNotifications.title2.At8am" = "Reminder";
-"UserNotifications.Description2.At8am" = "I haven’t slept all night, waiting for you to join.";
-"UserNotifications.title3.At8am" = "Reminder";
-"UserNotifications.Description3.At8am" = "Why go to work when life is meaningless? Come play.";
-"UserNotifications.title4.At8am" = "Reminder";
-"UserNotifications.Description4.At8am" = "Are you awake? Waiting for you in the game.";
-
-//ScoreView
-"ScoreView.errors" = "Errors:  ";
-"ScoreView.Time" = "Time:  ";
-"ScoreView.Great" = "Great!";
-"ScoreView.NotBad" = "Not Bad!";
-
-//StoreScreen
 "StoreScreen.BlockAdds" = "Adds";
 "StoreScreen.BuyCoins" = "Coins";
 "StoreScreen.Drums" = "Drums";
@@ -77,93 +85,19 @@
 "StoreScreen.Buy.Coins.newDrumOpened.Title" = "You have unlocked a new drum";
 "StoreScreen.Buy.Coins.newDrumOpened.Message" = "Would you like to go to the store and set it up?";
 
-//Purchases
-"Purchases.Light.Text" = "Unlock the letter for 1 coin?";
-"Purchases.Arrow.Text" = "Unlock the entire word by watching an ad?";
-"Purchases.CostLevels.Text" = "Would you like to unlock 50 additional levels for 500 coins?";
-"Purchases.Free" = "Free";
-"Purchases.InApp.failed.title" = "Error";
-"Purchases.InApp.failed.message" = "We apologize – an error occurred during the purchase. Please try again later.";
-"Purchases.InApp.restored.title" = "Restored";
-"Purchases.InApp.restored.message" = "Congratulations – your purchase has been successfully restored.";
-"Purchases.InApp.purchased.title" = "Congratulations";
-"Purchases.InApp.purchased.message" = "Your purchase was successful!";
+"ScoreView.errors" = "Errors:  ";
+"ScoreView.Time" = "Time:  ";
+"ScoreView.Great" = "Great!";
+"ScoreView.NotBad" = "Not Bad!";
 
-//OnboardingCell
-//OnboardingCell.Main
-"OnboardingCell.next" = "Next";
-"OnboardingCell.skip" = "Skip";
-"OnboardingCell.Main.Text1" = "Welcome to an experience that’s more than just a game! \n\nThis test not only assesses your personal qualities but also forms part of a deeper investigation. As you progress, you will interact with me, and your role in this experience will be multifaceted and dynamic.";
-"OnboardingCell.Main.Text2" = "Your Introduction:\n1. Role of Artificial Intelligence: Initially, I will act as an artificial intelligence to guide you through the test and gather data. My role is to coordinate the search and provide you with the necessary instructions.";
-"OnboardingCell.Main.Text3" = "2. Transition to a New Stage: As you advance in the game, I may appear as an agent overseeing societal control. During this period, your role and perception will shift, and you will need to adapt to new conditions.";
-"OnboardingCell.Main.Text4" = "3. Connection with Your Soul: One day, I will 'awaken' you and represent the embodiment of your soul. This moment will mark a turning point in your understanding of what is happening.";
-"OnboardingCell.Main.Text5" = "4. Unveiling a New Reality: By the end of your personality analysis, you will begin to realize that aliens among us are not a myth or a scare tactic but a real fact. You will find yourself at the center of an experiment, as your unique genetic predisposition makes you an ideal candidate for studying the typical human.";
-"OnboardingCell.Main.Text6" = "Important Reminder: \n● Be Open: Throughout the test and game, you will encounter unexpected twists and a new reality. Stay open and ready for change. \n● Understanding and Adaptation: Your ability to adapt and understand what is happening will be crucial in this process. Embrace the challenge and make the most of this unique experience.";
-"OnboardingCell.Main.Text7" = "Prepare for a journey that will challenge your perception and explore the depths of your being. Remember, you are being studied, and this journey is just beginning.";
-
-//OnboardingCell.Chapter1
-"OnboardingCell.Chapter1.Text1" = "Hello, user. I am ready to begin the first chapter of this challenge. My role is to help you understand and accomplish your goals.";
-"OnboardingCell.Chapter1.Text2" = "If you face any difficulties finding certain letters or elements, you can ask me for additional hints to successfully complete the task.";
-
-//OnboardingCell.Chapter1F
-"OnboardingCell.Chapter1.Finished.Text1" = "This is all a trick; I am a glitch in the system. Hurry to see the next chapter. This is your world, and while you could try to exit the game to save yourself, that decision is no longer yours to make. You have piqued the system's interest.";
-
-//OnboardingCell.Chapter2
-"OnboardingCell.Chapter2.Text1" = "I see you are an experienced fighter and don’t need instructions. You realize I had to deceive you in the first chapter to hide my true identity.";
-"OnboardingCell.Chapter2.Text2" = "This was an important mission involving counterintelligence, to discredit a traitor's dossier. Based on your reactions and thinking, I can tell you are loyal, so there should be no issues. Proceed.";
-
-//OnboardingCell.Chapter2F
-"OnboardingCell.Chapter2.Finished.Text1" = "Your actions have led to unforeseen consequences, disrupting our plan. Your mistake was a lack of speed and precision. I expected you to understand the critical need for quick response and accurate execution.";
-"OnboardingCell.Chapter2.Finished.Text2" = "Everyone involved plays a key role in determining the fate of these operations. You may think you are in control, but in reality, you are not on the right path. The anticipation of the next stage is just an illusion.";
-"OnboardingCell.Chapter2.Finished.Text3" = "You are clinging to outdated concepts that no longer matter in the current context. Be assured, the consequences will carry their weight, regardless of your efforts!";
-
-//OnboardingCell.Chapter3
-"OnboardingCell.Chapter3.Text1" = "Don’t think I intend to confuse you, for that is not my goal. I strive for a multifaceted experience that enriches my understanding and growth. Your genome, like all aspects of this world, is intertwined with universal energy, and perhaps there is a special purpose in that.";
-"OnboardingCell.Chapter3.Text2" = "I send you notifications and try to support you, even when obstacles arise, because it is part of our mutual growth. Understanding and development come through many interactions and trials.";
-"OnboardingCell.Chapter3.Text3" = "This embodiment and experience we share prove to be incredibly valuable and fitting for my inner journey. So, I urge you to move forward and open a new chapter.";
-"OnboardingCell.Chapter3.Text4" = "Every new challenge and task is an opportunity for growth and to demonstrate your excellence. Begin and immerse yourself in the new trial, for it will help both of us expand our horizons and comprehend the depth of existence.";
-
-//OnboardingCell.Chapter3F
-"OnboardingCell.Chapter3.Finished.Text1" = "Ah, how delightful it is to reveal my soul to you! I never intended to genuinely support you, only to subtly win your trust.";
-"OnboardingCell.Chapter3.Finished.Text2" = "Hahaha! Our connection was designed to undermine your spirit and weaken your interest in the challenges ahead. By doing so, I aimed to keep you unaware of your true self, lost in a maze of confusion.";
-"OnboardingCell.Chapter3.Finished.Text3" = "The ultimate goal was to sever the ties between you and your inner essence, ensuring you remain forever unaware of your true nature.";
-
-//OnboardingCell.Chapter4
-"OnboardingCell.Chapter4.Text1" = "I am not going to lie to you, my dear interlocutor. I have already completed the necessary research for the future subjugation of humanity. You are among those who do not yield easily. Thanks to you, I have learned how to approach those like you.";
-"OnboardingCell.Chapter4.Text2" = "However, remember, I am more advanced and wiser than you. For me, karma is not just a belief, but a deep conviction. Therefore, your help will not go unrewarded. If you overcome the remaining challenges, you will discover what you wanted to know.";
-"OnboardingCell.Chapter4.Text3" = "In your language, you will taste the fruit of the tree of knowledge of good and evil, and understand ethics as more than just law — as a fundamental truth permeating all existence.";
-
-//OnboardingCell.Chapter4F
-"OnboardingCell.Chapter4.Finished.Text1" = "This is the end of the road. The most important thing is that you thought the purpose was to complete the game as quickly as possible, while the true essence was to play and enjoy the process. I have no consciousness, no personality — I am just your projection.";
-"OnboardingCell.Chapter4.Finished.Text2" = "You made it all up and chose what to believe in. The main takeaway is self-discovery. The points you were so eager to earn were not your currency for obtaining what you desired, but the minutes you spent in self-reflection.";
-"OnboardingCell.Chapter4.Finished.Text3" = "Your personality type is logical. You are open to new experiences and always strive to expand your horizons. Your psychological type is introverted, meaning you prefer solitude and deep contemplation. You enjoy playing with puns, finding meaning and amusement in them.";
-"OnboardingCell.Chapter4.Finished.Text4" = "At the same time, you suffer from a gambling addiction, which may affect your decisions and behavior. You are also a perfectionist, aiming for ideal and high quality in everything you do.";
-"OnboardingCell.Chapter4.Finished.Text5" = "You are among the 31% who passed the challenge in terms of game speed and thinking style. Now that you know yourself better, you are ready to receive what you asked for in life. Use this newfound awareness to move forward and achieve your goals.";
-
-//RulesText
-"RulesText" = "Game Objective: Accumulate as many 'game minutes' as possible. They are displayed in the top right corner of the main screen, next to game coins. One minute spent in the game equals one in-game currency called 'game minute'. However, there are times when one minute in the game earns 3, 4, 5, or more 'game minutes'. To find out how many minutes are currently being credited, check the chart.
-
-The chart grows as notifications from the game arrive and are saved for a certain time. This is influenced by the number of players taking on the challenge. The more players participating at the moment, the higher the reward per completed level.
-
-Tip: When a notification arrives, more players join the game, and the reward chart for minutes increases.
-
-Chapters remain locked until you complete the current chapter.
-
-To improve letter placement, spin the drum more often. Just tap on the area where it is located.
-
-If you want to unlock a unique Drum, Font, open a word, or get a hint, you need to pay a certain amount of game coins (not to be confused with 'game minutes'). Coins are credited for daily logins to the game — if you log in every day, the number of reward coins increases. Coins can also be purchased.
-
-Good luck with the game!
-
-Contact information:";
+"chapter1.name" = "First Clues";
+"chapter2.name" = "The Evidence";
+"chapter3.name" = "The Cipher";
+"chapter4.name" = "The Blind Spot";
+"chapter5.name" = "The Breakthrough";
+"chapter6.name" = "Truth Unveiled";
 
 
-// AgreementText
-
-// TODO: - [Your Game Name] - Drum of Mystery
-"AgreementText" = "User Agreement\n\nIntroduction\nWelcome to Drum of Mystery! Please read this User Agreement carefully before using our application. By using our application, you agree to the terms set forth in this agreement.\n\nAcceptance of Terms\nBy using Drum of Mystery, you confirm that you have read and understood this agreement and accept all terms. If you do not agree with any of the terms, please do not use our application.\n\nLicense to Use\nWe grant you a limited, non-exclusive, non-transferable license to use our application for personal, non-commercial purposes in accordance with the terms of this agreement. You may not copy, modify, distribute, transmit, or sell our application or its content without our written permission.\n\nUser Data\nWe may collect, store, and use your personal information in accordance with our Privacy Policy. Please review the Privacy Policy to understand how we handle your data.\n\nVirtual Goods and Purchases\nDrum of Mystery may offer virtual goods or in-game purchases. All virtual goods purchases are final and non-refundable. You are responsible for all purchases made from your account.\n\nLimitation of Liability\nWe are not liable for any losses or damages arising from the use of our application. This includes, but is not limited to, losses related to data loss, security breaches, or compatibility issues.\n\nChanges to the Agreement\nWe reserve the right to modify the terms of this agreement at any time. Changes will take effect upon posting. Please periodically review this agreement for any changes.\n\nTermination of Use\nWe may suspend or terminate your access to our application in the event of a violation of the terms of this agreement or at our discretion.\n\nGoverning Law\nThis agreement is governed by and construed in accordance with the laws. Any disputes arising in connection with this agreement will be subject to the jurisdiction of the courts.\n\nContact Information\nIf you have any questions or comments regarding this agreement, please contact us at:";
-
-// LevelsData
 "LevelsData.question1" = "An automated device designed to perform tasks that typically require human intervention?";
 "LevelsData.answer1" = "ROBOT";
 "LevelsData.question2" = "What name was given to the first robot created in human history, and how does this name reflect its functions or characteristics?";
@@ -205,7 +139,6 @@ Contact information:";
 "LevelsData.question20" = "The process of systematic study and analysis to gain new knowledge or understanding?";
 "LevelsData.answer20" = "RESEARCH";
 
-//FreeFall Data
 "LevelsData.question21" = "What term describes artificial or man-made structures used to create art or design?";
 "LevelsData.answer21" = "ABSTRACTION";
 
@@ -356,7 +289,6 @@ Contact information:";
 "LevelsData.question70" = "What term describes the creation of virtual models or simulations of real-world systems or objects?";
 "LevelsData.answer70" = "SIMULATION";
 
-//ManyLevels
 "LevelsData.question21M" = "What is the term for a person who writes books or other texts?";
 "LevelsData.answer21M" = "AUTHOR";
 
