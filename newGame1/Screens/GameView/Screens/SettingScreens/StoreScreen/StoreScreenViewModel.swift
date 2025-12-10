@@ -66,87 +66,6 @@ struct StoreScreenModel {
 
 class StoreScreenViewModel {
     var data: [StoreScreenModel] = []
-    
-    // Пример заполнения модели данными
-    let buyCoinsData: BuyCoinsModel = BuyCoinsModel(
-        oneCoinModel: [
-            OneCoinModel(
-                image: UIImage(named: "Coins1"),
-                title: "10",
-                subtitle: "Purchases.Free".localized(),
-                cost: 0,
-                coinCount: 10,
-                productIdentifier: "" // TODO: - ТУТ НЕ НУЖНО ID продукта в AppStore
-            ),
-            OneCoinModel(
-                image: UIImage(named: "Coins2"),
-                title: "100",
-                subtitle: "0.99 $",
-                cost: 0.99,
-                coinCount: 100,
-                productIdentifier: StoreData.product100CoinsPackIdentifier 
-            ),
-            OneCoinModel(
-                image: UIImage(named: "Coins3"),
-                title: "500",
-                subtitle: "1.99 $",
-                cost: 1.99,
-                coinCount: 500,
-                productIdentifier: StoreData.product500CoinsPackIdentifier
-            ),
-            OneCoinModel(
-                image: UIImage(named: "Coins4"),
-                title: "1 000",
-                subtitle: "2.99 $",
-                cost: 2.99,
-                coinCount: 1000,
-                productIdentifier: StoreData.product1000CoinsPackIdentifier
-            ),
-            OneCoinModel(
-                image: UIImage(named: "Coins5"),
-                title: "10 000",
-                subtitle: "4.99 $",
-                cost: 4.99,
-                coinCount: 10000,
-                productIdentifier: StoreData.product10000CoinsPackIdentifier
-            ),
-        ]
-    )
-    
-    let fontsData = FontsModel(
-        oneFontModel: [
-            OneFontModel(
-                id: 23,
-                cost: 0,
-                font: UIFont.CostFont0
-            ),
-            OneFontModel(
-                id: 24,
-                cost: 50,
-                font: UIFont.CostFont1
-            ),
-            OneFontModel(
-                id: 25,
-                cost: 100,
-                font: UIFont.CostFont2
-            ),
-            OneFontModel(
-                id: 26,
-                cost: 100,
-                font: UIFont.CostFont3
-            ),
-            OneFontModel(
-                id: 27,
-                cost: 100,
-                font: UIFont.CostFont4
-            ),
-            OneFontModel(
-                id: 28,
-                cost: 500,
-                font: UIFont.CostFont5
-            )
-        ]
-    )
             
     let drumsData1 = DrumsModel(
         sectionTitle: "StoreScreen.Drums.section1".localized(),
@@ -323,7 +242,7 @@ class StoreScreenViewModel {
     )
     
     init() {
-        PurchasedLogicHelper.shared.addDrumPurchased(purchas: drumsData1.oneDrumsModel[0].id) // первый барабан доступен по дефолту
+        PurchasedLogicHelper.shared.addDrumPurchased(purchas: drumsData1.oneDrumsModel[0].id) 
         if PurchasedLogicHelper.shared.getCurrentDrumID() == 0 {
             PurchasedLogicHelper.shared.saveCurrentDrumID(1)
         }
@@ -331,10 +250,7 @@ class StoreScreenViewModel {
             PurchasedLogicHelper.shared.saveCurrentFontID(23)
         }
         
-        data = [
-            StoreScreenModel(section: .blockAdds(BlockAddsModel(text: ""))),
-            StoreScreenModel(section: .buyCoins(buyCoinsData)),
-            StoreScreenModel(section: .fonts(fontsData)),
+        data = [            
             StoreScreenModel(section: .drums([drumsData1, drumsData2, drumsData3, drumsData4, drumsData5, drumsData6]))
         ]
     }

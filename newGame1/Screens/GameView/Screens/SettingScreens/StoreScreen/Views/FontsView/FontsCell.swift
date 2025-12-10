@@ -140,17 +140,7 @@ class FontsCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionV
             title:  "StoreScreen.BlockAddsCell.confirm".localized(),
             style: .destructive,
             handler: { [weak self] _ in
-                guard data.cost != 0 else { return }
-
-                if CoinsHelper.shared.getSpecialCoins() >= data.cost {
-                    PurchasedLogicHelper.shared.addFontPurchased(purchas: data.id)
-                    CoinsHelper.shared.saveSpecialCoins(CoinsHelper.shared.getSpecialCoins() - data.cost)
-                    PurchasedLogicHelper.shared.saveCurrentFont(data.font)
-                    PurchasedLogicHelper.shared.saveCurrentFontID(data.id)
-                    NotificationCenter.default.post(name: Notification.Name("changeCurrentFont"), object: nil)
-                } else {
-                    self?.showAlertNotEnothMoney()
-                }
+              
             }))
         
         viewController?.present(alert, animated: true, completion: nil)

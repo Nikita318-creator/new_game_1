@@ -167,15 +167,8 @@ class MainScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             
             self.navigationController?.pushViewController(extraChaptersScreen, animated: true)
         } else {
-            showAlert(title: "Purchases.CostLevels.Text".localized(), message: "") { [weak self] in
-                if CoinsHelper.shared.getSpecialCoins() >= 500 {
-                    CoinsHelper.shared.saveSpecialCoins(CoinsHelper.shared.getSpecialCoins() - 500)
-                    LevelProgreeHelper.shared.saveManyLevels(true)
-                    self?.collectionView.reloadData()
-                } else {
-                    self?.showAlertNotEnothMoney()
-                }
-            }
+            LevelProgreeHelper.shared.saveManyLevels(true)
+            collectionView.reloadData()
         }
     }
     
@@ -196,29 +189,6 @@ class MainScreenVC: UIViewController, UICollectionViewDataSource, UICollectionVi
             style: .destructive,
             handler: { _ in
                 complition()
-            }))
-        
-        present(alert, animated: true, completion: nil)
-    }
-    
-    private func showAlertNotEnothMoney() {
-        let alert = UIAlertController(
-            title: "StoreScreen.Buy.Coins.NotEnath.Title".localized(),
-            message: "StoreScreen.Buy.Coins.NotEnath.Message".localized(),
-            preferredStyle: .alert
-        )
-        
-        alert.addAction(UIAlertAction(
-            title: "StoreScreen.BlockAddsCell.cancel".localized(),
-            style: .cancel,
-            handler: nil))
-        
-        alert.addAction(UIAlertAction(
-            title: "OK".localized(),
-            style: .destructive,
-            handler: { [weak self] _ in
-                let storeScreenVC = StoreScreenVC()
-                self?.navigationController?.pushViewController(storeScreenVC, animated: true)
             }))
         
         present(alert, animated: true, completion: nil)

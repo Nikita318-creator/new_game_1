@@ -114,7 +114,7 @@ class DrumsCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionV
             return UICollectionViewCell()
         }
         
-        let title = PurchasedLogicHelper.shared.getDrumPurchased().contains(data.id) ? "StoreScreen.Buy.Coins.Avaliable".localized() : data.title
+        let title = "StoreScreen.Buy.Coins.Avaliable".localized()
         cell.configure(image: data.image, title: title)
         cell.updateDidSelect(isSelect: PurchasedLogicHelper.shared.getCurrentDrumID() == data.id)
 
@@ -134,13 +134,12 @@ class DrumsCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionV
             return
         }
         
-        if PurchasedLogicHelper.shared.getDrumPurchased().contains(data.id), let defaultBaraban = UIImage(named: "Baraban20") {
+        if let defaultBaraban = UIImage(named: "Baraban20") {
             PurchasedLogicHelper.shared.saveCurrentDrum(data.image ?? defaultBaraban)
             PurchasedLogicHelper.shared.saveCurrentDrumID(data.id)
             NotificationCenter.default.post(name: Notification.Name("changeCurrentDrum"), object: nil)
-        } else {
-            buyTapped(data: data)
         }
+       
     }
     
     private func buyTapped(data: OneDrumsModel) {
@@ -164,19 +163,7 @@ class DrumsCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionV
             title:  "StoreScreen.BlockAddsCell.confirm".localized(),
             style: .default,//.
             handler: { [weak self] _ in
-                guard data.cost != 0 else { return }
-
-                if CoinsHelper.shared.getSpecialCoins() >= data.cost {
-                    PurchasedLogicHelper.shared.addDrumPurchased(purchas: data.id)
-                    CoinsHelper.shared.saveSpecialCoins(CoinsHelper.shared.getSpecialCoins() - data.cost)
-                    if let defaultBaraban = UIImage(named: "Baraban20") {
-                        PurchasedLogicHelper.shared.saveCurrentDrum(data.image ?? defaultBaraban)
-                        PurchasedLogicHelper.shared.saveCurrentDrumID(data.id)
-                        NotificationCenter.default.post(name: Notification.Name("changeCurrentDrum"), object: nil)
-                    }
-                } else {
-                    self?.showAlertNotEnothMoney()
-                }
+            
             }))
         
         viewController?.present(alert, animated: true, completion: nil)

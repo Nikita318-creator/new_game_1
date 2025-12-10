@@ -76,7 +76,6 @@ class GameVC: UIViewController {
         
         view.layoutIfNeeded()
         
-        // Добавьте эффект плавания для каждой кнопки с разными задержками или скоростями
         addFloatingEffect(to: mainButton, delay: 0.0, duration: 2.0)
         addFloatingEffect(to: storeButton, delay: 0.0, duration: 2.5)
         addFloatingEffect(to: agreementButton, delay: 0.0, duration: 4.0)

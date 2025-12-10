@@ -69,10 +69,7 @@ class StoreScreenVC: UIViewController, UICollectionViewDataSource, UICollectionV
     }
 
     private func registerCells() {
-        collectionView.register(BlockAddsCell.self, forCellWithReuseIdentifier: "BlockAddsCell")
-        collectionView.register(BuyCoinsCell.self, forCellWithReuseIdentifier: "BuyCoinsCell")
         collectionView.register(DrumsCell.self, forCellWithReuseIdentifier: "DrumsCell")
-        collectionView.register(FontsCell.self, forCellWithReuseIdentifier: "FontsCell")
         
         collectionView.register(SectionHeaderView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionHeader, withReuseIdentifier: "SectionHeaderView")
     }
@@ -165,25 +162,14 @@ class StoreScreenVC: UIViewController, UICollectionViewDataSource, UICollectionV
         let sectionModel = viewModel.data[indexPath.section].section
 
         switch sectionModel {
-        case .blockAdds(let model):
-            let width = collectionView.frame.width - 20 // Ширина ячейки с учетом отступов
-            let height: CGFloat = 100 // Высота ячейки, можно задать по-другому
-            return CGSize(width: width, height: height)
-
-        case .buyCoins(let model):
-            let width = collectionView.frame.width - 20 // Ширина ячейки с учетом отступов
-            let height: CGFloat = 2 * collectionView.frame.width / 3 + 50 // Высота ячейки, можно задать по-другому
-            return CGSize(width: width, height: height)
 
         case .drums(let model):
             let width = collectionView.frame.width - 20 // Ширина ячейки с учетом отступов
             let height: CGFloat = 2 * width / 3
             return CGSize(width: width, height: height + 40)
-
-        case .fonts(let fonts):
-            let width = collectionView.frame.width - 20 // Ширина ячейки с учетом отступов
-            let height: CGFloat = 2 * collectionView.frame.width / 3 + 50 // Высота ячейки, можно задать по-другому
-            return CGSize(width: width, height: height)
+            
+        default:
+            return CGSize(width: 0, height: 0)
         }
     }
     

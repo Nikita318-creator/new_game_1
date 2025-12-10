@@ -55,15 +55,7 @@ class BlockAddsCell: UICollectionViewCell {
             title:  "StoreScreen.BlockAddsCell.confirm".localized(),
             style: .destructive,
             handler: { [weak self] _ in
-                if CoinsHelper.shared.getSpecialCoins() >= PriceConst.blockAddsCost {
-                    CoinsHelper.shared.saveSpecialCoins(CoinsHelper.shared.getSpecialCoins() - PriceConst.blockAddsCost)
-                    PurchasedLogicHelper.shared.saveShowAdds(true)
-
-                    // TODO: - логика отключения рекламы в приложении
-                    
-                } else {
-                    self?.showAlertNotEnothMoney()
-                }
+                
             }))
         
         viewController?.present(alert, animated: true, completion: nil)
