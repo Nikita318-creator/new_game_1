@@ -7,7 +7,7 @@ workflows:
       groups:
         - app_store_credentials
       vars:
-        BUNDLE_ID: "com.MysterySpin.app123"
+        BUNDLE_ID: "com.MysterySpin.app"
         XCODE_PROJECT: "newGame1.xcodeproj"
         XCODE_SCHEME: "newGame1"
       
