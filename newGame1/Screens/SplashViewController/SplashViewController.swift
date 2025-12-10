@@ -7,7 +7,8 @@ class SplashViewController: UIViewController {
         
         view.backgroundColor = .systemBackground
         
-        let imageView = UIImageView(image: UIImage(systemName: "hand.wave.fill")) // test111
+//        let imageView = UIImageView(image: UIImage(systemName: "hand.wave.fill")) // test111
+        let imageView = UIImageView(image: UIImage(systemName: "")) 
         imageView.translatesAutoresizingMaskIntoConstraints = false
         imageView.tintColor = .systemBlue 
         imageView.contentMode = .scaleAspectFit

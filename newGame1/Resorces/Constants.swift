@@ -1,6 +1,6 @@
 import UIKit
 
 enum Const {
-    static let appsFlyerDevKey = "ВАШ_APPSFLYER_DEV_КЛЮЧ" // test111
-    static let appleAppID = "1234567890" // test111
+    static let appsFlyerDevKey = "P8Cmc5f5JjkNjQ3haoGbWS"
+    static let appleAppID = "6756383243"
 }

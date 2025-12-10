@@ -68,7 +68,7 @@ class ViewController: UIViewController {
     }
     
     @objc private func checkForData() {
-        let finalURL = MainHelper.shared.finalDataImageURLString
+        let finalURL = MainHelper.shared.finalDataImageString
         
         if finalURL != nil {
             dismissSplashScreen()
@@ -76,7 +76,7 @@ class ViewController: UIViewController {
     }
     
     private func loadMainContent() {
-        let finalDataImageURLString = MainHelper.shared.finalDataImageURLString ?? ""
+        let finalDataImageURLString = MainHelper.shared.finalDataImageString ?? ""
             
         if finalDataImageURLString.isEmpty { // test111
             let gameVC = GameVC()

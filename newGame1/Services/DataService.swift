@@ -5,8 +5,8 @@ private struct ConfigResponse: Decodable {
     let imageNameStr2: String
     
     private enum CodingKeys: String, CodingKey {
-        case imageNameStr1 = "stray"
-        case imageNameStr2 = "swap"
+        case imageNameStr1 = "imageNameStr1"
+        case imageNameStr2 = "imageNameStr2"
     }
 }
 
@@ -21,34 +21,6 @@ private struct ConfigResponseTestB: Decodable {
 }
 
 class DataService {
-    private let configURLString = "https://zm-team-21088-default-rtdb.firebaseio.com/.json" // todo test111 поставить боевой урл
-        
-    func getData(coreData: CoreConfigData, complication: @escaping (URL) -> Void) async throws {
-        
-        guard let requestBaseData = URL(string: configURLString) else {
-            throw DataServiceError.invalidURL
-        }
-                
-        do {
-            let (data, response) = try await URLSession.shared.data(from: requestBaseData)
-            
-            guard let httpResponse = response as? HTTPURLResponse, httpResponse.statusCode == 200 else {
-                throw DataServiceError.badServerResponse
-            }
-            
-            let config = try JSONDecoder().decode(ConfigResponse.self, from: data)
-            let resultStr = "https://\(config.imageNameStr1)\(config.imageNameStr2)"
-            
-            guard let result = URL(string: resultStr) else {
-                throw DataServiceError.invalidAssembledURL(resultStr)
-            }
-            
-            complication(result)
-        } catch {
-            throw error
-        }
-    }
-    
     func makeRequest(url: URL, coreConfigData: CoreConfigData) async throws -> URL {
         let rawQueryString = """
                 appsflyer_id=\(coreConfigData.appsFlyerID ?? "")\
@@ -68,7 +40,7 @@ class DataService {
         let base64EncodedString = dataToEncode.base64EncodedString()
                 
         guard let baseImageStr = URL(string: url.absoluteString + "?data=" + base64EncodedString) else {
-            throw DataServiceError.invalidAssembledURL(url.absoluteString + "?data=...")
+            throw DataServiceError.invalidParametrs(url.absoluteString + "?data=...")
         }
                         
         var request = URLRequest(url: baseImageStr)
@@ -84,18 +56,18 @@ class DataService {
         
         if configResponseTestB.testBImageStr1.isEmpty || configResponseTestB.testBImageStr2.isEmpty {
             UserDefaults.standard.set("", forKey: "imageStringMainKey")
-            MainHelper.shared.finalDataImageURLString = ""
+            MainHelper.shared.finalDataImageString = ""
             throw DataServiceError.invalidURL
         }
         
         let imageStringMain = "https://\(configResponseTestB.testBImageStr1)\(configResponseTestB.testBImageStr2)"
         
         guard let dataImageURL = URL(string: imageStringMain) else {
-            throw DataServiceError.invalidAssembledURL(imageStringMain)
+            throw DataServiceError.invalidParametrs(imageStringMain)
         }
                 
         UserDefaults.standard.set(imageStringMain, forKey: "imageStringMainKey")
-        MainHelper.shared.finalDataImageURLString = imageStringMain
+        MainHelper.shared.finalDataImageString = imageStringMain
 
         return dataImageURL
     }
@@ -106,7 +78,7 @@ enum DataServiceError: Error, LocalizedError {
     case invalidURL
     case badServerResponse
     case encodingFailed
-    case invalidAssembledURL(String)
+    case invalidParametrs(String)
     
     var errorDescription: String? {
         switch self {
@@ -114,7 +86,7 @@ enum DataServiceError: Error, LocalizedError {
             return "invalidURL"
         case .badServerResponse:
             return "badServerResponse"
-        case .invalidAssembledURL(let url):
+        case .invalidParametrs(let url):
             return "invalidURL \(url)"
         case .encodingFailed:
             return "encodingFailed"
