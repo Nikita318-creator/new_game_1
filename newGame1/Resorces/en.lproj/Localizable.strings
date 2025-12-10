@@ -8,12 +8,7 @@
 "AlphabetView" = "ABC DEFG HIJKL MNO PQR STUVW XYZ";
 
 // Chapter names
-"chapter1.name" = "Chapter 1";
-"chapter2.name" = "Chapter 2";
-"chapter3.name" = "Chapter 3";
-"chapter4.name" = "Chapter 4";
-"chapter5.name" = "Free Fall";
-"chapter6.name" = "Last Road";
+
 
 // LevelcomplitedView
 "Levelcomplited.Title" = "Level Completed";
@@ -39,27 +34,6 @@
 "UserNotifications.Description3.At8am" = "Why go to work when life is meaningless? Come play.";
 "UserNotifications.title4.At8am" = "Reminder";
 "UserNotifications.Description4.At8am" = "Are you awake? Waiting for you in the game.";
-
-// Chart
-"Chart.CurrentEarnings" = "Current Earnings";
-"Chart.CurrentEarnings.Text" = "Your current earnings for 1 minute in the game";
-"Chart.CurrentEarnings.XGameMinutes" = "x game minutes!";
-
-// UpdateChecker
-"UpdateChecker.Update" = "Update";
-"UpdateChecker.Cancel" = "Cancel";
-"UpdateChecker.Title" = "Update Available";
-"UpdateChecker.Message" = "A new version of the app is available. Please update the app to get the latest features and bug fixes.";
-
-// Coins
-"Coins.Day" = "day: ";
-"Coins.RewardTitle" = "Daily Reward: ";
-"Coins.RewardSubTitle" = "Log in every day to earn more coins!";
-"Coins.TimeError.Title" = "Time Error";
-"Coins.TimeError.Message" = "The gods of time do not appreciate jokes with time.";
-"Coins.RegularCoins.Info" = "Info";
-"Coins.RegularCoins.InfoMessage" = "This shows the number of minutes you've spent in the game.";
-"Coins.RegularCoins.FinishedInfoMessage" = " Minutes it took you to complete the main storyline";
 
 //ScoreView
 "ScoreView.errors" = "Errors:  ";

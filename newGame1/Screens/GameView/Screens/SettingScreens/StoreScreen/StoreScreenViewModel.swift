@@ -153,7 +153,7 @@ class StoreScreenViewModel {
         oneDrumsModel: [
             OneDrumsModel(
                 id: 1,
-                image: UIImage(named: "Baraban"),
+                image: UIImage(named: "Baraban20"),
                 title: "StoreScreen.Buy.Coins.NotAvaliable".localized(),
                 cost: 0
             ),

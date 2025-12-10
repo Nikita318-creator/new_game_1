@@ -134,7 +134,7 @@ class DrumsCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionV
             return
         }
         
-        if PurchasedLogicHelper.shared.getDrumPurchased().contains(data.id), let defaultBaraban = UIImage(named: "Baraban") {
+        if PurchasedLogicHelper.shared.getDrumPurchased().contains(data.id), let defaultBaraban = UIImage(named: "Baraban20") {
             PurchasedLogicHelper.shared.saveCurrentDrum(data.image ?? defaultBaraban)
             PurchasedLogicHelper.shared.saveCurrentDrumID(data.id)
             NotificationCenter.default.post(name: Notification.Name("changeCurrentDrum"), object: nil)
@@ -169,7 +169,7 @@ class DrumsCell: UICollectionViewCell, UICollectionViewDataSource, UICollectionV
                 if CoinsHelper.shared.getSpecialCoins() >= data.cost {
                     PurchasedLogicHelper.shared.addDrumPurchased(purchas: data.id)
                     CoinsHelper.shared.saveSpecialCoins(CoinsHelper.shared.getSpecialCoins() - data.cost)
-                    if let defaultBaraban = UIImage(named: "Baraban") {
+                    if let defaultBaraban = UIImage(named: "Baraban20") {
                         PurchasedLogicHelper.shared.saveCurrentDrum(data.image ?? defaultBaraban)
                         PurchasedLogicHelper.shared.saveCurrentDrumID(data.id)
                         NotificationCenter.default.post(name: Notification.Name("changeCurrentDrum"), object: nil)

@@ -22,7 +22,7 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
     }
 
     var barabanImage: UIImage? {
-        return PurchasedLogicHelper.shared.getCurrentDrum() ?? UIImage(named: "Baraban")
+        return PurchasedLogicHelper.shared.getCurrentDrum() ?? UIImage(named: "Baraban20")
     }
 
     var viewModel = BarabanScreenViewModel()
