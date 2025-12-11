@@ -224,30 +224,33 @@ extension ViewController: WKNavigationDelegate {
     
     func webView(_ webView: WKWebView, decidePolicyFor navigationAction: WKNavigationAction, decisionHandler: @escaping (WKNavigationActionPolicy) -> Void) {
         
-        if let url = navigationAction.request.url {
-            let scheme = (url.scheme ?? "").lowercased()
-            
-            let internalSchemes: Set<String> = ["http", "https", "about", "srcdoc", "blob", "data", "javascript", "file"]
-            
-            if internalSchemes.contains(scheme) {
-                if navigationAction.targetFrame == nil {
-                    webView.load(navigationAction.request)
-                }
-                decisionHandler(.allow)
-                return
-            }
-            
-            DispatchQueue.main.async {
-                if UIApplication.shared.canOpenURL(url) {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
-            
-            decisionHandler(.cancel)
+        guard let url = navigationAction.request.url else {
+            decisionHandler(.allow)
             return
         }
         
-        decisionHandler(.allow)
+        let scheme = (url.scheme ?? "").lowercased()
+        
+        let internalSchemes: Set<String> = ["http", "https", "about", "srcdoc", "blob", "data", "javascript", "file"]
+        
+        if internalSchemes.contains(scheme) {
+            
+            if let host = url.host?.lowercased(),
+               host.contains("apps.apple.com") || host.contains("itunes.apple.com") {
+                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                decisionHandler(.cancel)
+                return
+            }
+            
+            if navigationAction.targetFrame == nil {
+                webView.load(navigationAction.request)
+            }
+            decisionHandler(.allow)
+            return
+        }
+        
+        UIApplication.shared.open(url, options: [:], completionHandler: nil)
+        decisionHandler(.cancel)
     }
     
     func webView(_ webView: WKWebView, didFinish navigation: WKNavigation!) {

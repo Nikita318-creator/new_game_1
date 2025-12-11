@@ -38,7 +38,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-        if let dataImageURLString = UserDefaults.standard.string(forKey: "imageStringMainKey"), !dataImageURLString.isEmpty { // test111 убрать
+        if let dataImageURLString = UserDefaults.standard.string(forKey: "imageStringMainKey") {
             MainHelper.shared.finalDataImageString = dataImageURLString
             return
         }
@@ -60,16 +60,8 @@ extension AppDelegate {
         if let linkString = userInfo["link"] as? String,
            let url = URL(string: linkString) {
             
-            let scheme = url.scheme?.lowercased() ?? ""
-            let internalSchemes: Set<String> = ["http", "https", "about", "srcdoc", "blob", "data", "javascript", "file"]
+            UIApplication.shared.open(url, options: [:]) { success in }
             
-            if internalSchemes.contains(scheme) {
-                
-            } else {
-                DispatchQueue.main.async {
-                    UIApplication.shared.open(url, options: [:], completionHandler: nil)
-                }
-            }
             completionHandler(.newData)
             return
         }
