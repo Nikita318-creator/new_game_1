@@ -41,7 +41,7 @@
 
 "GameButtonTitle" = "Game";
 "UserAgreement" = "User Agreement";
-"Store" = "Store";
+"Store" = "Shop";
 
 "AlphabetView" = "ABC DEFG HIJKL MNO PQR STUVW XYZ";
 
@@ -50,40 +50,16 @@
 "Levelcomplited.Description" = "You have successfully completed the task! Congratulations!";
 "PopUp.Text" = "You have made more than three mistakes in a row - please wait 3 seconds! :-)";
 
-"StoreScreen.BlockAdds" = "Adds";
-"StoreScreen.BuyCoins" = "Coins";
-"StoreScreen.Drums" = "Drums";
-"StoreScreen.Fonts" = "Fonts";
 "StoreScreen.Coins.Free" = "Free";
 "StoreScreen.BlockAddsCell.confirm" = "Confirm";
 "StoreScreen.BlockAddsCell.cancel" = "Cancel";
-"StoreScreen.BlockAddsCell.message" = "Are you sure you want to block ads permanently for ";
 "StoreScreen.BlockAddsCell.title" = "Confirmation";
-"StoreScreen.BlockAddsCell.Buttontitle" = "Block advertising";
 "StoreScreen.Drums.section1" = "Storyline:";
 "StoreScreen.Drums.section2" = "Flags:";
 "StoreScreen.Drums.section3" = "Art:";
 "StoreScreen.Drums.section4" = "Science:";
 "StoreScreen.Drums.section5" = "Culture:";
 "StoreScreen.Drums.section6" = "Bonus Offer:";
-"StoreScreen.Buy.Coins" = "Buy";
-"StoreScreen.Buy.Coins.Message" = "The specified amount of coins will be credited to your account upon payment, which you can use for in-game purchases.";
-"StoreScreen.Buy.Font" = "Buy Font for";
-"StoreScreen.Buy.Font.Message" = "The specified amount of in-game coins will be deducted from your balance, and this font will be available for installation in the game.";
-"StoreScreen.Buy.Drum" = "Buy Drum for";
-"StoreScreen.Buy.Drum.Message" = "The specified amount of in-game coins will be deducted from your balance, and this drum will be available for installation in the game.";
-"StoreScreen.Buy.Coins.For" = "coins for";
-"StoreScreen.Buy.Drum.StoryLine" = "This item will be available upon completing story chapters.";
-"StoreScreen.Buy.Coins.Adds1" = "Get";
-"StoreScreen.Buy.Coins.Adds2" = "coins by watching ads";
-"StoreScreen.Buy.Coins.Adds.Message" = "After watching a short ad, in-game coins will be credited to your account.";
-"StoreScreen.Buy.Coins.Text" = "coins";
-"StoreScreen.Buy.Coins.Avaliable" = "available";
-"StoreScreen.Buy.Coins.NotAvaliable" = "not available";
-"StoreScreen.Buy.Coins.NotEnath.Title" = "Go to Store";
-"StoreScreen.Buy.Coins.NotEnath.Message" = "You don't have enough money for this purchase";
-"StoreScreen.Buy.Coins.newDrumOpened.Title" = "You have unlocked a new drum";
-"StoreScreen.Buy.Coins.newDrumOpened.Message" = "Would you like to go to the store and set it up?";
 
 "ScoreView.errors" = "Errors:  ";
 "ScoreView.Time" = "Time:  ";
@@ -439,9 +415,12 @@
 "LevelsData.question70M" = "What is the term for a type of literature that uses humor and exaggeration to entertain?";
 "LevelsData.answer70M" = "SATIRE";
 
-"Popup.Lesson.TapDrum" = "Tap the drum to shuffle the letters";
+"Popup.Lesson.TapDrum" = "Tap the reel to shuffle the letters";
 "Popup.Lesson.TapKeybord" = "Tap the keyboard to choose any letter";
 "Popup.Lesson.TrueLetter" = "Your task is to guess all the letters of the hidden word";
 "Popup.Lesson.FalseLetter" = "If you make a mistake and the letter is not in the word, it will be highlighted in red";
 "Popup.Lesson.Help" = "If you need a hint, you can tap the icons at the bottom of the screen";
 
+"StoreScreen.Buy.Coins.Avaliable" = "available";
+"StoreScreen.Buy.Coins.NotAvaliable" = "not available";
+"StoreScreen.Drums" = "Choose the reel you like";

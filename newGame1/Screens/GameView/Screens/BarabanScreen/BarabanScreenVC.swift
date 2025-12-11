@@ -7,7 +7,7 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         static let question = "Your Question Here"
         static let cellSize: CGFloat = 30
         static let cellSizeMini: CGFloat = 25
-        static let cellSizeMaxi: CGFloat = 30 // решил не использовать это
+        static let cellSizeMaxi: CGFloat = 30
         static let cellSpacing: CGFloat = 4
         static let labelInitialSize: CGFloat = 28
         static let labelFinalSize: CGFloat = 74
@@ -30,6 +30,16 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
 
     var answerWithoutduplicated = ""
     
+    // 1. Ленивое свойство для картинки "lady"
+    private lazy var ladyImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.contentMode = .scaleAspectFit
+        imageView.clipsToBounds = true
+        // Загружаем изображение "lady" из ассетов
+        imageView.image = UIImage(named: "lady")
+        return imageView
+    }()
+
     private lazy var barabanImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.contentMode = .scaleAspectFill
@@ -94,15 +104,14 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
             }
             
             if answerText.contains(letter) {
+                GameLogicHelper.shared.saveGameLesson(true)
                 answerText = answerText.replacingOccurrences(of: letter, with: "")
-                // Добавляем логику для анимации появления буквы
                 self.showAnimatedLabel(with: letter)
                 handleTap()
                 
                 if answerText.isEmpty {
                     DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
                         self.finishedLevel()
-                        GameLogicHelper.shared.saveGameLesson(true)
                     }
                 }
                     
@@ -126,7 +135,7 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         
         barabanImageView.image = barabanImage
         
-        if !GameLogicHelper.shared.getGameLesson() {            
+        if !GameLogicHelper.shared.getGameLesson() {
             popUpLessonView.setup(text: "Popup.Lesson.TapDrum".localized())
             popUpLessonView.show(isNeedHide: false)
             barabanImageView.layer.borderColor = UIColor.systemGreen.withAlphaComponent(0.7).cgColor
@@ -174,13 +183,25 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
     }
     
     private func setupImageView() {
+        // 2. Добавляем ladyImageView первым (чтобы была "под" барабаном)
+        view.addSubview(ladyImageView)
         view.addSubview(barabanImageView)
         
+        // Констрейнты для барабана (без изменений)
         barabanImageView.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
+            make.leading.equalToSuperview().inset(0)
             make.top.equalTo(collectionView.snp.bottom).inset(20)
             make.width.equalTo(view.snp.width).inset(60)
             make.height.equalTo(barabanImageView.snp.width)
+        }
+        
+        // 3. Констрейнты для ladyImageView
+        ladyImageView.snp.makeConstraints { make in
+            make.trailing.equalToSuperview().inset(-50)
+            make.centerY.equalTo(barabanImageView)
+            make.height.equalTo(barabanImageView)
+            make.width.equalTo(ladyImageView.snp.height) // Сохраняем пропорции, равные высоте
+            
         }
     }
 
@@ -408,7 +429,7 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         levelcomplitedView.okDidTapHandler = { [weak self] in
             self?.navigationController?.popViewController(animated: false)
         }
-                
+                  
         let time = getCurrentTime() ?? 0
         levelcomplitedView.setup(
             time: time,
@@ -489,7 +510,7 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "AnswerCell", for: indexPath) as? AnswerCell else {
             return UICollectionViewCell()
         }
-  
+ 
         let keyWord = viewModel.data[currentLevel].keyWord
         let index = keyWord.index(keyWord.startIndex, offsetBy: indexPath.item)
         let currentLetter = String(keyWord[index])
