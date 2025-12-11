@@ -1,11 +1,3 @@
-//
-//  PurchasedLogicHelper.swift
-//  Baraban
-//
-//  Created by никита уваров on 7.09.24.
-//
-
-
 import UIKit
 
 class PurchasedLogicHelper {

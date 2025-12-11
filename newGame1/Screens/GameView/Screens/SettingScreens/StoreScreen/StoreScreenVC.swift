@@ -1,9 +1,4 @@
-//
-//  StoreScreenVC.swift
-//  Baraban
-//
-//  Created by никита уваров on 25.08.24.
-//
+
 
 import UIKit
 import SnapKit
@@ -92,23 +87,9 @@ class StoreScreenVC: UIViewController, UICollectionViewDataSource, UICollectionV
 
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         let sectionModel = viewModel.data[indexPath.section].section
-
+        
         switch sectionModel {
-        case .blockAdds(let model):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BlockAddsCell", for: indexPath) as? BlockAddsCell else {
-                return UICollectionViewCell()
-            }
-            cell.viewController = self
-            return cell
-
-        case .buyCoins(let model):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "BuyCoinsCell", for: indexPath) as? BuyCoinsCell else {
-                return UICollectionViewCell()
-            }
-            cell.viewModel = model
-            cell.viewController = self
-            return cell
-
+            
         case .drums(let model):
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "DrumsCell", for: indexPath) as? DrumsCell else {
                 return UICollectionViewCell()
@@ -119,17 +100,8 @@ class StoreScreenVC: UIViewController, UICollectionViewDataSource, UICollectionV
                 collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
             }
             return cell
-
-        case .fonts(let model):
-            guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "FontsCell", for: indexPath) as? FontsCell else {
-                return UICollectionViewCell()
-            }
-            cell.viewModel = model
-            cell.viewController = self
-            cell.scrollToTopHandler = {
-                collectionView.setContentOffset(CGPoint(x: 0, y: 0), animated: true)
-            }
-            return cell
+            
+        default: return UICollectionViewCell()
         }
     }
 

@@ -1,9 +1,4 @@
-//
-//  OnboardingCell.swift
-//  Baraban
-//
-//  Created by никита уваров on 30.08.24.
-//
+
 
 import UIKit
 import SnapKit

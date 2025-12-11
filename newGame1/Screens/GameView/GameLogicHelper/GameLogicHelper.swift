@@ -1,10 +1,3 @@
-//
-//  GameLogicHelper.swift
-//  Baraban
-//
-//  Created by никита уваров on 25.08.24.
-//
-
 import UIKit
 
 class GameLogicHelper {

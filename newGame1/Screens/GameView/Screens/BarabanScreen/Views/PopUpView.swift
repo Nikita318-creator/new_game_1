@@ -1,10 +1,3 @@
-//
-//  PopUpView.swift
-//  Baraban
-//
-//  Created by никита уваров on 1.09.24.
-//
-
 import UIKit
 import SnapKit
 

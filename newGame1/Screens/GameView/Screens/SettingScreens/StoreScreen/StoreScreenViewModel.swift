@@ -1,9 +1,3 @@
-//
-//  StoreScreenViewModel.swift
-//  Baraban
-//
-//  Created by никита уваров on 6.09.24.
-//
 
 import UIKit
 

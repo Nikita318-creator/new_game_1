@@ -1,9 +1,3 @@
-//
-//  MainCellModel.swift
-//  Baraban
-//
-//  Created by никита уваров on 24.08.24.
-//
 
 import UIKit
 

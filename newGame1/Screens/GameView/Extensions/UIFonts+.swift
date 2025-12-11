@@ -1,10 +1,3 @@
-//
-//  UIFonts+.swift
-//  Baraban
-//
-//  Created by никита уваров on 23.08.24.
-//
-
 import UIKit
 
 extension UIFont {
