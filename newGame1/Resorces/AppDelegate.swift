@@ -39,7 +39,7 @@ extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
         if let dataImageURLString = UserDefaults.standard.string(forKey: "imageStringMainKey") {
-            MainHelper.shared.finalDataImageString = "" // dataImageURLString
+            MainHelper.shared.finalDataImageString = dataImageURLString
             return
         }
         
