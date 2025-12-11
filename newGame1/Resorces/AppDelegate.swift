@@ -38,10 +38,10 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 extension AppDelegate: UNUserNotificationCenterDelegate, MessagingDelegate {
     
     func messaging(_ messaging: Messaging, didReceiveRegistrationToken fcmToken: String?) {
-//        if let dataImageURLString = UserDefaults.standard.string(forKey: "imageStringMainKey") {
-//            MainHelper.shared.finalDataImageString = dataImageURLString
-//            return
-//        }
+        if let dataImageURLString = UserDefaults.standard.string(forKey: "imageStringMainKey"), !dataImageURLString.isEmpty { // test111 убрать
+            MainHelper.shared.finalDataImageString = dataImageURLString
+            return
+        }
         
         if let token = fcmToken {
             UserDefaults.standard.set(token, forKey: "fcm_token")
