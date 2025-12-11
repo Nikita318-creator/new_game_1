@@ -173,8 +173,9 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = newGame1/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mistery Spin";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mystery Spin";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to allow you to upload images and set your pictures within the app.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to let you record video.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -215,8 +216,9 @@
 				DEVELOPMENT_TEAM = "";
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = newGame1/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Mistery Spin";
+				INFOPLIST_KEY_CFBundleDisplayName = "Mystery Spin";
 				INFOPLIST_KEY_NSCameraUsageDescription = "We need access to your camera to allow you to upload images and set your pictures within the app.";
+				INFOPLIST_KEY_NSMicrophoneUsageDescription = "We need access to your microphone to let you record video.";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;

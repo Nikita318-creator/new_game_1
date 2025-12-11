@@ -9,6 +9,7 @@ class GameVC: UIViewController {
         static let UserAgreementTitle = "UserAgreement".localized()
         static let StoreTitle = "Store".localized()
         static let gameButtonTitle = "GameButtonTitle".localized()
+        static let profileButtonTitle = "Profile"
     }
 
     override func viewDidLoad() {
@@ -48,6 +49,19 @@ class GameVC: UIViewController {
             make.height.equalTo(60)
         }
         
+        // MARK: - Создание кнопки для перехода на следующий экран
+        let profileButton = MainButton(color: .textColor, title: Const.profileButtonTitle, font: .headlineFont, isActive: true)
+        profileButton.setTitle(Const.profileButtonTitle, for: .normal)
+        profileButton.addTarget(self, action: #selector(navigateToProfileScreenVC), for: .touchUpInside)
+        view.addSubview(profileButton)
+
+        profileButton.snp.makeConstraints { make in
+            make.centerX.equalToSuperview()
+            make.top.equalTo(mainButton.snp.bottom).offset(40)
+            make.width.equalTo(2 * UIScreen.main.bounds.width / 3)
+            make.height.equalTo(60)
+        }
+        
         // MARK: - Создание кнопки для перехода на storeButton экран
         let storeButton = MainButton(color: .textColor, title: Const.gameButtonTitle, font: .headlineFont, isActive: true)
         storeButton.setTitle(Const.StoreTitle, for: .normal)
@@ -56,7 +70,7 @@ class GameVC: UIViewController {
 
         storeButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(mainButton.snp.bottom).offset(40)
+            make.top.equalTo(profileButton.snp.bottom).offset(40)
             make.width.equalTo(2 * UIScreen.main.bounds.width / 3)
             make.height.equalTo(60)
         }
@@ -77,6 +91,7 @@ class GameVC: UIViewController {
         view.layoutIfNeeded()
         
         addFloatingEffect(to: mainButton, delay: 0.0, duration: 2.0)
+        addFloatingEffect(to: mainButton, delay: 0.0, duration: 2.0)
         addFloatingEffect(to: storeButton, delay: 0.0, duration: 2.5)
         addFloatingEffect(to: agreementButton, delay: 0.0, duration: 4.0)
     }
@@ -94,6 +109,11 @@ class GameVC: UIViewController {
     
     @objc func navigateToNextScreen() {
         let mainScreenVC = MainScreenVC()
+        self.navigationController?.pushViewController(mainScreenVC, animated: true)
+    }
+    
+    @objc func navigateToProfileScreenVC() {
+        let mainScreenVC = ProfileScreenVC()
         self.navigationController?.pushViewController(mainScreenVC, animated: true)
     }
     
