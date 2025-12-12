@@ -189,7 +189,8 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
         
         // Констрейнты для барабана (без изменений)
         barabanImageView.snp.makeConstraints { make in
-            make.leading.equalToSuperview().inset(0)
+//            make.leading.equalToSuperview().inset(0) // test111
+            make.centerX.equalToSuperview()
             make.top.equalTo(collectionView.snp.bottom).inset(20)
             make.width.equalTo(view.snp.width).inset(60)
             make.height.equalTo(barabanImageView.snp.width)
@@ -201,8 +202,9 @@ class BarabanScreenVC: UIViewController, UICollectionViewDataSource, UICollectio
             make.centerY.equalTo(barabanImageView)
             make.height.equalTo(barabanImageView)
             make.width.equalTo(ladyImageView.snp.height) // Сохраняем пропорции, равные высоте
-            
         }
+        
+        ladyImageView.isHidden = true // test111
     }
 
     private func setupQuestionLabel() {

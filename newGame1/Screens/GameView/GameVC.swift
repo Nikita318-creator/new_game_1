@@ -50,17 +50,17 @@ class GameVC: UIViewController {
         }
         
         // MARK: - Создание кнопки для перехода на следующий экран
-        let profileButton = MainButton(color: .textColor, title: Const.profileButtonTitle, font: .headlineFont, isActive: true)
-        profileButton.setTitle(Const.profileButtonTitle, for: .normal)
-        profileButton.addTarget(self, action: #selector(navigateToProfileScreenVC), for: .touchUpInside)
-        view.addSubview(profileButton)
-
-        profileButton.snp.makeConstraints { make in
-            make.centerX.equalToSuperview()
-            make.top.equalTo(mainButton.snp.bottom).offset(40)
-            make.width.equalTo(2 * UIScreen.main.bounds.width / 3)
-            make.height.equalTo(60)
-        }
+//        let profileButton = MainButton(color: .textColor, title: Const.profileButtonTitle, font: .headlineFont, isActive: true)
+//        profileButton.setTitle(Const.profileButtonTitle, for: .normal)
+//        profileButton.addTarget(self, action: #selector(navigateToProfileScreenVC), for: .touchUpInside)
+//        view.addSubview(profileButton)
+//
+//        profileButton.snp.makeConstraints { make in
+//            make.centerX.equalToSuperview()
+//            make.top.equalTo(mainButton.snp.bottom).offset(40)
+//            make.width.equalTo(2 * UIScreen.main.bounds.width / 3)
+//            make.height.equalTo(60)
+//        }
         
         // MARK: - Создание кнопки для перехода на storeButton экран
         let storeButton = MainButton(color: .textColor, title: Const.gameButtonTitle, font: .headlineFont, isActive: true)
@@ -70,7 +70,7 @@ class GameVC: UIViewController {
 
         storeButton.snp.makeConstraints { make in
             make.centerX.equalToSuperview()
-            make.top.equalTo(profileButton.snp.bottom).offset(40)
+            make.top.equalTo(mainButton.snp.bottom).offset(40)
             make.width.equalTo(2 * UIScreen.main.bounds.width / 3)
             make.height.equalTo(60)
         }
